@@ -18,33 +18,33 @@ endfunction
 function! s:select_plugin_manager() abort
     let l:use_packages = has('packages') && ( has('job') || exists('*jobstart()') )
 
-    if isdirectory(expand('~/.vim/pack/minpac/opt/minpac')) &&
-        \ filereadable(expand('~/.vim/autoload/plugpac.vim')) &&
+    if isdirectory($XDG_CONFIG_HOME . '/vim/pack/minpac/opt/minpac') &&
+        \ filereadable($XDG_CONFIG_HOME . '/vim/autoload/plugpac.vim') &&
         \ l:use_packages
         return 'plugpac'
     endif
 
-    if filereadable( expand('~/.vim/autoload/plug.vim') )
+    if filereadable( $XDG_CONFIG_HOME . '/vim/autoload/plug.vim') ) && !executable('curl')
         return 'vim_plug'
     endif
 
-    if !( filereadable( expand('~/.vim/autoload/plug.vim') ) || executable('curl') )
+    if !executable('curl')
         throw 'Cannot download plugin manager. Plesae install curl.'
     endif
 
-    if executable('curl') && executable('git') && l:use_packages
-        if !isdirectory(expand('~/.vim/pack/minpac/opt/minpac'))
+    if executable('git') && l:use_packages
+        if !isdirectory($XDG_CONFIG_HOME . '/vim/pack/minpac/opt/minpac'))
             execute 'silent !git clone https://github.com/k-takata/minpac.git ' .
-                \ expand('~/.vim/pack/minpac/opt/minpac')
+                \ $XDG_CONFIG_HOME . '/vim/pack/minpac/opt/minpac')
         endif
-        if !filereadable(expand('~/.vim/autoload/plugpac.vim'))
-            execute 'silent !curl -fLo ' . expand('~/.vim/autoload/plugpac.vim') . ' --create-dirs ' .
+        if !filereadable($XDG_CONFIG_HOME . '/vim/autoload/plugpac.vim'))
+            execute 'silent !curl -fLo ' . $XDG_CONFIG_HOME . '/vim/autoload/plugpac.vim') . ' --create-dirs ' .
                 \ 'https://raw.githubusercontent.com/bennyyip/plugpac.vim/master/plugpac.vim'
         endif
         autocmd VimEnter * PackUpdate | source $MYVIMRC
         return 'plugpac'
-    elseif executable('curl')
-      execute 'silent !curl -flo ' . expand('~/.vim/autoload/plug.vim') . ' --create-dirs ' .
+    else
+      execute 'silent !curl -flo ' . $XDG_CONFIG_HOME . '/vim/autoload/plug.vim') . ' --create-dirs ' .
         \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
       autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
@@ -58,22 +58,22 @@ endfunction
 function! s:vim_plug() abort
 
 " Vim-Plug automatic download {{{
-" if empty(glob('~/.vim/autoload/plug.vim'))
-if !filereadable(expand('~/.vim/autoload/plug.vim'))
+" if empty(glob('$HOME/.config/vim/autoload/plug.vim'))
+if !filereadable($XDG_CONFIG_HOME . '/vim/autoload/plug.vim'))
 endif
 " }}}
 
-call plug#begin('~/.vim/bundle')
+call plug#begin('$HOME/.config/vim/bundle')
 
 if g:windows
-    Plug '~/.vim/pack/osplugin/opt/osplugin-windows'
+    Plug '$HOME/.config/vim/pack/osplugin/opt/osplugin-windows'
 elseif g:linux
-    Plug '~/.vim/pack/osplugin/opt/osplugin-linux'
+    Plug '$HOME/.config/vim/pack/osplugin/opt/osplugin-linux'
 endif
 
 " if has('win32unix') || !has('gui_running')
 "     if isdirectory(expand('$HOME/.vim/src/vim-SnippetsCompleteMe'))
-"         Plug '~/.vim/src/vim-SnippetsCompleteMe'
+"         Plug '$HOME/.config/vim/src/vim-SnippetsCompleteMe'
 "         execute 'helptags ' .
 "             \ expand('$HOME/.vim/src/vim-SnippetsCompleteMe/doc')
 "     else
@@ -81,14 +81,14 @@ endif
 "     endif
 " endif
 if isdirectory(expand('$HOME/.vim/src/vim-grip'))
-    Plug '~/.vim/src/vim-grip', { 'for' : 'markdown' }
+    Plug '$HOME/.config/vim/src/vim-grip', { 'for' : 'markdown' }
     execute 'helptags ' . expand('$HOME/.vim/src/vim-grip/doc')
 else
     Plug 'PratikBhusal/vim-grip', { 'for': 'markdown' }
 endif
 
 if isdirectory(expand('$HOME/.vim/pack/src/start/vim-darkokai'))
-    Plug '~/.vim/pack/src/start/vim-darkokai'
+    Plug '$HOME/.config/vim/pack/src/start/vim-darkokai'
 else
     Plug 'PratikBhusal/vim-darkokai'
 endif
@@ -109,16 +109,16 @@ Plug 'easymotion/vim-easymotion'
 Plug 'aykamko/vim-easymotion-segments'
 Plug 'chaoren/vim-wordmotion'
 
-if executable('go')
-    if isdirectory(expand('~/.fzf'))
-        Plug '~/.fzf'
-    else
-        Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    endif
-    Plug 'junegunn/fzf.vim'
-else
-    Plug 'ctrlpvim/ctrlp.vim'
-endif
+" if executable('go')
+"     if isdirectory($XDG_CONFIG_HOME . '/fzf'))
+"         Plug '$HOME/.config/fzf'
+"     else
+"         Plug 'junegunn/fzf', { 'dir': '$HOME/.config/fzf', 'do': './install --all' }
+"     endif
+"     Plug 'junegunn/fzf.vim'
+" else
+"     Plug 'ctrlpvim/ctrlp.vim'
+" endif
 
 " Navigation Plugins }}}
 
@@ -191,7 +191,7 @@ if has('python3') && ( has('nvim-0.3.0') || has('patch-8.1.001') ) && executable
     " Plug 'Shougo/neco-vim'
     " Plug 'zchee/deoplete-jedi'
 else
-    Plug 'lifepillar/vim-mucomplete'
+    " Plug 'lifepillar/vim-mucomplete'
 endif
 " Plug 'lifepillar/vim-mucomplete'
 " Autocompletion Plugins }}}
@@ -234,7 +234,7 @@ Plug 'mbbill/undotree'
 " " Python Autocompletion
 " Plug 'vim-scripts/pythoncomplete'
 
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf', { 'dir': '$HOME/.config/fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
 
 " add vim-lightline. May eventually replace vim-airline
@@ -298,11 +298,13 @@ if g:windows
     packadd osplugin-windows
 elseif g:linux
     packadd osplugin-linux
+elseif g:macOS
+    packadd osplugin-linux
 endif
 
 " if has('win32unix') || !has('gui_running')
 "     if isdirectory(expand('$HOME/.vim/src/vim-SnippetsCompleteMe'))
-"         Pack '~/.vim/src/vim-SnippetsCompleteMe'
+"         Pack '$HOME/.config/vim/src/vim-SnippetsCompleteMe'
 "         execute 'helptags ' .
 "             \ expand('$HOME/.vim/src/vim-SnippetsCompleteMe/doc')
 "     else
@@ -428,7 +430,7 @@ if ( has('nvim-0.3.0') || has('patch-8.1.001') ) && executable('node') && v:fals
     " Pack 'roxma/vim-hug-neovim-rpc'
     " Pack 'Shougo/neco-vim'
     " Pack 'zchee/deoplete-jedi'
-elseif ( has('nvim-0.3.0') || has('patch-8.1.001') )
+elseif ( has('nvim-0.3.0') || has('patch-8.1.001') ) && v:false
     Pack 'prabirshrestha/async.vim'
     Pack 'prabirshrestha/vim-lsp'
     Pack 'prabirshrestha/asyncomplete.vim'
@@ -441,7 +443,7 @@ elseif ( has('nvim-0.3.0') || has('patch-8.1.001') )
     endif
     Pack 'mattn/vim-lsp-settings'
 else
-    Pack 'lifepillar/vim-mucomplete'
+    " Pack 'lifepillar/vim-mucomplete'
 endif
 " Pack 'lifepillar/vim-mucomplete'
 " Autocompletion plugins }}}
