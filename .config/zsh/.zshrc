@@ -89,7 +89,7 @@ bindkey "^?" backward-delete-char
 # preexec() { echo -ne '\e[5 q' ;}
 
 # Load fzf default settings
-[ -f ~/.fzf.zsh ] && . ~/.fzf.zsh
+command -v fzf 1> /dev/null 2>&1 && [ -f ~/.fzf.zsh ] && . ~/.fzf.zsh
 
 # zinit installer {{{
     if [[ ! -f $HOME/.config/zsh/.zinit/bin/zinit.zsh ]]; then
@@ -124,6 +124,3 @@ if command -v vim 1> /dev/null 2>&1; then
     bashcompinit
     eval "$(register-python-argcomplete pipx)"
 fi
-
-# Setup direnv
-command -v direnv 1> /dev/null 2>&1 && eval "$(direnv hook zsh)"

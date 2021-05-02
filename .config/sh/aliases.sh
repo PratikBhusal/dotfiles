@@ -7,31 +7,37 @@ case "$-" in
 esac
 
 # enable color support of ls and also add handy aliases
-if command -v dircolors >/dev/null 2>&1 ; then
+if [ $DOTFILES_MACHINE = 'Linux' ]; then
+    if command -v dircolors >/dev/null 2>&1 ; then
 
-    if [ -r ~/.dircolors ]; then
-        eval "$(dircolors -b ~/.dircolors)"
+        if [ -r ~/.dircolors ]; then
+            eval "$(dircolors -b ~/.dircolors)"
+        else
+            eval "$(dircolors -b)"
+        fi
+
+        alias ls='ls -hp --group-directories-first --color=auto'
+        # alias dir='dir --color=auto'
+        # alias vdir='vdir --color=auto'
+
+        alias grep='grep --color=auto'
+        alias fgrep='fgrep --color=auto'
+        alias egrep='egrep --color=auto'
     else
-        eval "$(dircolors -b)"
+        alias ls='ls -hp --group-directories-first'
     fi
-
-    alias ls='ls -hN --group-directories-first --color=auto'
-    # alias dir='dir --color=auto'
-    # alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-else
-    alias ls='ls -hN --group-directories-first'
+elif [ $DOTFILES_MACHINE = 'Mac' ]; then
+        alias ls='ls -hp'
 fi
 
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias cp='cp -i'
 alias mv='mv -i'
 
-alias journalctl='sudo journalctl'
-alias systemctl='sudo systemctl'
+# alias journalctl='sudo journalctl'
+# alias systemctl='sudo systemctl'
+
+alias tmux="tmux -2"
 
 if [ "$LANG" = '' ]; then
     export LANG=en_US.UTF-8

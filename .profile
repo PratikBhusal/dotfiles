@@ -7,6 +7,13 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+case "$(uname -s)" in
+    Linux*)     DOTFILES_MACHINE=Linux;;
+    Darwin*)    DOTFILES_MACHINE=Mac;;
+    *)          DOTFILES_MACHINE="UNKOWN:"
+esac
+export DOTFILES_MACHINE
+
 
 # shellcheck source=.config/sh/functions.sh
 [ -r ~/.config/sh/functions.sh ] && . ~/.config/sh/functions.sh
@@ -16,6 +23,10 @@ if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
     # shellcheck source=.bashrc
     . "$HOME/.bashrc"
 fi
+
+# For ls, remove quotes around names
+export QUOTING_STYLE=literal
+export CLICOLOR=1
 
 # zsh settings
 export ZDOTDIR="$HOME/.config/zsh"
@@ -68,7 +79,4 @@ INFOPATH=$(cleanup_path "$INFOPATH")
 
 if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
     eval "$(direnv hook bash)"
-fi
-if [ -n "$ZSH_VERSION" ] && [ -f "$HOME/.zprofile" ]; then
-    eval "$(direnv hook zsh)"
 fi

@@ -33,15 +33,20 @@ zinit snippet OMZ::plugins/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
 
     # Can't get it to work with this just yet. Just installed via Arch User
     # Repository
+    # prompt pure
 
-    prompt pure
-    # zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
-    # zinit light sindresorhus/pure
+    # Load the pure theme, with zsh-async library that's bundled with it.
+    zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+    zinit light sindresorhus/pure
 # Get the pure shell prompt plugin }}}
-
-
 
 # zinit light denysdovhan/spaceship-prompt
 
 # Add syntax highlighting
 zinit light zdharma/fast-syntax-highlighting
+
+# Add direnv support
+zinit from"gh-r" as"program" mv"direnv* -> direnv" \
+    atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
+    pick"direnv" src="zhook.zsh" for \
+        direnv/direnv
