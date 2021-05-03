@@ -77,9 +77,11 @@
 # ############################################################### #
 
 
+## Remaining Cords:
+# ctrl + cmd
 
 ## HYPER == SHIFT + CMD + ALT + OPTION
-
+# Use CAPS LOCK with Karabiner Elements to map it to HYPER
 
 # Restart yabai
 ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
@@ -90,27 +92,93 @@ hyper - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -
 
 # focus window
 cmd - h : yabai -m window --focus west
-cmd - j : yabai -m window --focus north
-cmd - k : yabai -m window --focus south
+cmd - j : yabai -m window --focus south
+cmd - k : yabai -m window --focus north
 cmd - l : yabai -m window --focus east
 
-# When on macbook
-# alt - h : yabai -m window --focus west
-# alt - j : yabai -m window --focus south
-# alt - k : yabai -m window --focus north
-# alt - l : yabai -m window --focus east
-
-# swap managed window
-shift + alt - h : yabai -m window --swap west
-
-# move managed window
+# move managed window within desktop
 shift + cmd - h : yabai -m window --warp west
 shift + cmd - j : yabai -m window --warp south
 shift + cmd - k : yabai -m window --warp north
 shift + cmd - l : yabai -m window --warp east
 
+# swap managed window
+shift + alt - h : yabai -m window --swap west
+shift + alt - j : yabai -m window --swap south
+shift + alt - k : yabai -m window --swap north
+shift + alt - l : yabai -m window --swap east
+
+# set insertion point in focused container
+ctrl + alt - h : yabai -m window --insert west
+ctrl + alt - j : yabai -m window --insert south
+ctrl + alt - k : yabai -m window --insert north
+ctrl + alt - l : yabai -m window --insert east
+
 # balance size of windows
 shift + alt - 0 : yabai -m space --balance
+
+# move floating window
+cmd + ctrl - h : yabai -m window --move rel:-20:0
+cmd + ctrl - j : yabai -m window --move rel:0:20
+cmd + ctrl - k : yabai -m window --move rel:0:-20
+cmd + ctrl - l : yabai -m window --move rel:20:0
+
+# Adjust window size
+hyper - h : \
+    yabai -m window --resize left:-20:0 ; \
+    yabai -m window --resize right:-20:0
+
+hyper - j : \
+    yabai -m window --resize bottom:0:20 ; \
+    yabai -m window --resize top:0:20
+
+hyper - k : \
+    yabai -m window --resize top:0:-20 ; \
+    yabai -m window --resize bottom:0:-20
+
+hyper - l : \
+    yabai -m window --resize right:20:0 ; \
+    yabai -m window --resize left:20:0
+
+
+# toggle window zoom
+hyper - d : yabai -m window --toggle zoom-parent
+hyper - f : yabai -m window --toggle zoom-fullscreen
+
+# toggle window split type
+hyper - e : yabai -m window --toggle split
+
+
+# Move Window to Specific Desktop
+shift + cmd - 1 : yabai -m window --space 1
+shift + cmd - 2 : yabai -m window --space 2
+shift + cmd - 3 : yabai -m window --space 3
+shift + cmd - 4 : yabai -m window --space 4
+
+
+# Move Windows and go to desktop that it was put into
+hyper - 1 : yabai -m window --space 1 && eval "$(yabai -m query --spaces | jq --argjson index 1 -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."native-fullscreen" == 0)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')"
+hyper - 2 : yabai -m window --space 2 && eval "$(yabai -m query --spaces | jq --argjson index 2 -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."native-fullscreen" == 0)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')"
+hyper - 3 : yabai -m window --space 3 && eval "$(yabai -m query --spaces | jq --argjson index 3 -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."native-fullscreen" == 0)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')"
+hyper - 4 : yabai -m window --space 4 && eval "$(yabai -m query --spaces | jq --argjson index 4 -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."native-fullscreen" == 0)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')"
+
+
+# float / unfloat window and center on screen
+hyper - t : yabai -m window --toggle float;\
+                  yabai -m window --grid 4:4:1:1:2:2;\
+                  yabai -m window --toggle pip
+
+# toggle sticky(+float), topmost, picture-in-picture
+hyper - p : yabai -m window --toggle sticky;\
+          yabai -m window --toggle topmost;\
+          yabai -m window --toggle pip
+
+
+################################################################################
+#
+# Montior and SIC Non-compliant hotkeys
+#
+################################################################################
 
 # send window to desktop and follow focus
 # shift + cmd - z : yabai -m window --space next; yabai -m space --focus next
@@ -127,34 +195,4 @@ shift + alt - 0 : yabai -m space --balance
 # ctrl + cmd - c  : yabai -m window --display next; yabai -m display --focus next
 # ctrl + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
 
-# move floating window
-# shift + ctrl - a : yabai -m window --move rel:-20:0
-# shift + ctrl - s : yabai -m window --move rel:0:20
-
-# increase window size
-# shift + alt - a : yabai -m window --resize left:-20:0
-# shift + alt - w : yabai -m window --resize top:0:-20
-
-# decrease window size
-# shift + cmd - s : yabai -m window --resize bottom:0:-20
-# shift + cmd - w : yabai -m window --resize top:0:20
-
-# set insertion point in focused container
-# ctrl + alt - h : yabai -m window --insert west
-
-# toggle window zoom
-# alt - d : yabai -m window --toggle zoom-parent
-# alt - f : yabai -m window --toggle zoom-fullscreen
-
-# toggle window split type
-# alt - e : yabai -m window --toggle split
-
-# float / unfloat window and center on screen
-alt - t : yabai -m window --toggle float;\
-                  yabai -m window --grid 4:4:1:1:2:2;\
-                  yabai -m window --toggle pip
-
-# toggle sticky(+float), topmost, picture-in-picture
-# alt - p : yabai -m window --toggle sticky;\
-#           yabai -m window --toggle topmost;\
-#           yabai -m window --toggle pip
+################################################################################
