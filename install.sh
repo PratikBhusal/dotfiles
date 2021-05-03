@@ -25,6 +25,8 @@ while ! dotfiles checkout; do
         mv ~/$0/$1 ~/.dotfiles-backup/$0/$1" 1> /dev/null 2>&1
 done
 
+dotfiles config user.email PratikBhusal@users.noreply.github.com
+
 # if  [ -x "$(command -v git)" ] &&
 #     [ -x "$(command -v rsync)" ] &&
 #     [ ! -d "$HOME/.dotfiles" ]; then
