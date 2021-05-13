@@ -23,20 +23,20 @@
 # ------------------------------------------------------------------------------
 # # Focus space focused before the current one (so you can alternate)
 # yabai -m space --focus recent
-# 
+#
 # # Focus previous space by mission-control index
 # yabai -m space --focus prev
-# 
+#
 # # Focus next space by mission-control index
 # yabai -m space --focus next
-# 
+#
 # # Focus space with mission-control index 2
 # yabai -m space --focus 2
-# 
+#
 # # Focus next space by mission-control index if one exists, otherwise focus the
 #   first space
 # yabai -m space --focus next || yabai -m space --focus first
-# 
+#
 # # Focus previous space by mission-control index if one exists, otherwise focus
 #   the last space
 # yabai -m space --focus prev || yabai -m space --focus last
@@ -46,7 +46,7 @@
 # ------------------------------------------------------------------------------
 # # Create space on the active display
 # yabai -m space --create
-# 
+#
 # # Delete focused space and focus first space on display
 # yabai -m space --destroy
 # ------------------------------------------------------------------------------
@@ -55,10 +55,10 @@
 # ------------------------------------------------------------------------------
 # # Move space left
 # yabai -m space --move prev
-# 
+#
 # # Move space right
 # yabai -m space --move next
-# 
+#
 # # Send space to display 2 (by display arrangement index)
 # yabai -m space --display 2
 # ------------------------------------------------------------------------------
@@ -97,7 +97,7 @@ yabai -m config layout                       bsp
 # yabai -m config bottom_padding               12
 # yabai -m config left_padding                 12
 # yabai -m config right_padding                12
-# yabai -m config window_gap                   06
+yabai -m config window_gap                   03
 
 
 # Windows that should always be in a floating window
@@ -110,12 +110,13 @@ yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Keepass.*" sticky=on layer=above manage=off
 yabai -m rule --add app="^Installer$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Calculator$" sticky=on layer=above manage=off
+yabai -m rule --add app="^Font Book$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" sticky=on layer=above manage=off
 
-# killall limelight &> /dev/null
-# limelight &> /dev/null &
+killall limelight &> /dev/null
+limelight &> /dev/null &
 
-# When a window is closed, move focus to the window closest to the mouse 
+# When a window is closed, move focus to the window closest to the mouse
 yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
 yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
 
