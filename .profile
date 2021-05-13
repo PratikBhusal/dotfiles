@@ -33,9 +33,6 @@ fi
 export QUOTING_STYLE=literal
 export CLICOLOR=1
 
-# zsh settings
-export ZDOTDIR="$HOME/.config/zsh"
-
 # Setup readline inputrc config
 export INPUTRC="$HOME/.config/readline/inputrc"
 
