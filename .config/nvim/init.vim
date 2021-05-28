@@ -6,6 +6,8 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
 set runtimepath^=$XDG_CONFIG_HOME/vim runtimepath+=$XDG_CONFIG_HOME/vim/after
 let &packpath = &runtimepath
 
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
 if empty($MYVIMRC) | let $MYVIMRC = expand('<sfile>:p') | endif
 source $XDG_CONFIG_HOME/vim/vimrc
 " Vim Backwards Compatibility }}} ----------------------------------------------

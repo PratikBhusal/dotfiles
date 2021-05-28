@@ -21,11 +21,12 @@ set runtimepath^=$XDG_CONFIG_HOME/vim
 set runtimepath+=$XDG_DATA_HOME/vim
 set runtimepath+=$XDG_CONFIG_HOME/vim/after
 
-set packpath^=$XDG_DATA_HOME/vim,$XDG_CONFIG_HOME/vim
+" set packpath^=$XDG_DATA_HOME/vim,$XDG_CONFIG_HOME/vim
+set packpath^=$XDG_CONFIG_HOME/vim
 set packpath+=$XDG_CONFIG_HOME/vim/after,$XDG_DATA_HOME/vim/after
 
 let g:netrw_home = $XDG_DATA_HOME."/vim"
-call mkdir($XDG_DATA_HOME."/vim/spell", 'p', 0700)
+call mkdir($XDG_CONFIG_HOME."/vim/spell", 'p', 0700)
 set viewdir=$XDG_DATA_HOME/vim/view | call mkdir(&viewdir, 'p', 0700)
 
 set backupdir=$XDG_CACHE_HOME/vim/backup | call mkdir(&backupdir, 'p', 0700)
@@ -59,7 +60,7 @@ command! Q q
 command! W w
 command! WQ wq
 command! Wq wq
-inoremap <expr> jk pumvisible() ? "<C-e>" : "<Esc>"
+" inoremap <expr> jk pumvisible() ? "<C-e>" : "<Esc>"
 let g:mapleader = "\<Space>"
 let g:maplocalleader = "\<Space>"
 nnoremap <SPACE> <Nop>
@@ -115,7 +116,6 @@ if ( has('vcon') || has('termguicolors') ) &&
     set termguicolors
 endif
 
-autocmd LazyLoadPlugin VimEnter * colorscheme darkokai | AirlineRefresh
 " Custom colors for colorscheme }}} --------------------------------------------
 
 " Change how the cursor looks {{{ ----------------------------------------------
@@ -224,9 +224,9 @@ set noerrorbells novisualbell t_vb=
 nnoremap <silent> <TAB> :bnext<cr>
 " Return to last edit position
 autocmd BufReadPost *
-   \ if line("'\"") > 0 && line("'\"") <= line("$") |
-   \     exe "normal! g`\"" |
-   \ endif
+  \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+  \ |   exe "normal! g`\""
+  \ | endif
 
 
 if exists('&emoji')

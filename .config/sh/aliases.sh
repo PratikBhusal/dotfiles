@@ -82,3 +82,5 @@ fi
 
 # export QT_STYLE_OVERRIDE=gtk
 # export QT_SELECT=qt5
+
+command -v mpv >/dev/null 2>&1 && alias streamaudio="mpv --no-video --no-cache --volume=50"

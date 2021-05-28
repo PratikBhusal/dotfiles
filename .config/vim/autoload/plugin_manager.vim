@@ -456,6 +456,7 @@ endif
 " Pack 'prabirshrestha/asyncomplete-lsp.vim'
 " Pack 'prabirshrestha/asyncomplete-buffer.vim'
 " Pack 'prabirshrestha/asyncomplete-ultisnips.vim'
+Pack 'jdhao/better-escape.vim'
 Pack 'haya14busa/incsearch.vim'
 Pack 'haya14busa/incsearch-easymotion.vim'
 Pack 'kovetskiy/sxhkd-vim'

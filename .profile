@@ -7,6 +7,11 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+
 case "$(uname -s)" in
     Linux*)     DOTFILES_MACHINE=Linux;;
     Darwin*)    DOTFILES_MACHINE=Mac;;
@@ -50,7 +55,7 @@ command -v i3lock  1> /dev/null 2>&1 && export LOCKER="i3lock"
 
 command -v grip  1> /dev/null 2>&1 && export GRIPHOME="$HOME/.config/grip"
 
-if command -v xrandr 1> /dev/null 2>&1; then
+if [ $DOTFILES_MACHINE = 'Linux' ] && command -v xrandr 1> /dev/null 2>&1; then
     PRIMARY_DISPLAY="$(xrandr | awk '/ primary/{print $1}')"
     export PRIMARY_DISPLAY
 fi

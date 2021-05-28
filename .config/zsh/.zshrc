@@ -119,7 +119,7 @@ command -v fzf 1> /dev/null 2>&1 && [ -f ~/.fzf.zsh ] && . ~/.fzf.zsh
 [ -s ~/.config/nnn/config ] && . ~/.config/nnn/config
 
 # Setup pipx
-if command -v vim 1> /dev/null 2>&1; then
+if command -v pipx 1> /dev/null 2>&1; then
     autoload -U bashcompinit
     bashcompinit
     eval "$(register-python-argcomplete pipx)"
