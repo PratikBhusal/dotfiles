@@ -24,7 +24,7 @@ function! s:select_plugin_manager() abort
         return 'plugpac'
     endif
 
-    if filereadable( $XDG_CONFIG_HOME . '/vim/autoload/plug.vim') ) && !executable('curl')
+    if filereadable( $XDG_CONFIG_HOME . '/vim/autoload/plug.vim') && !executable('curl')
         return 'vim_plug'
     endif
 
@@ -33,18 +33,18 @@ function! s:select_plugin_manager() abort
     endif
 
     if executable('git') && l:use_packages
-        if !isdirectory($XDG_CONFIG_HOME . '/vim/pack/minpac/opt/minpac'))
+        if !isdirectory($XDG_CONFIG_HOME . '/vim/pack/minpac/opt/minpac')
             execute 'silent !git clone https://github.com/k-takata/minpac.git ' .
-                \ $XDG_CONFIG_HOME . '/vim/pack/minpac/opt/minpac')
+                \ $XDG_CONFIG_HOME . '/vim/pack/minpac/opt/minpac'
         endif
-        if !filereadable($XDG_CONFIG_HOME . '/vim/autoload/plugpac.vim'))
+        if !filereadable($XDG_CONFIG_HOME . '/vim/autoload/plugpac.vim')
             execute 'silent !curl -fLo ' . $XDG_CONFIG_HOME . '/vim/autoload/plugpac.vim') . ' --create-dirs ' .
                 \ 'https://raw.githubusercontent.com/bennyyip/plugpac.vim/master/plugpac.vim'
         endif
         autocmd VimEnter * PackUpdate | source $MYVIMRC
         return 'plugpac'
     else
-      execute 'silent !curl -flo ' . $XDG_CONFIG_HOME . '/vim/autoload/plug.vim') . ' --create-dirs ' .
+      execute 'silent !curl -flo ' . $XDG_CONFIG_HOME . '/vim/autoload/plug.vim' . ' --create-dirs ' .
         \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
       autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
@@ -178,21 +178,21 @@ if v:version >= 800
 endif
 
 " Autocompletion Plugins {{{
-if has('python3') && ( has('nvim-0.3.0') || has('patch-8.1.001') ) && executable('node')
-    Plug 'neoclide/vim-node-rpc'
-    Plug 'Shougo/neco-vim'
-    Plug 'neoclide/coc-neco'
-    Plug 'neoclide/coc-sources'
-    Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-    autocmd FileType json syntax match Comment +\/\/.\+$+
-    " Plug 'Shougo/deoplete.nvim'
-    " Plug 'roxma/nvim-yarp'
-    " Plug 'roxma/vim-hug-neovim-rpc'
-    " Plug 'Shougo/neco-vim'
-    " Plug 'zchee/deoplete-jedi'
-else
-    " Plug 'lifepillar/vim-mucomplete'
-endif
+" if has('python3') && ( has('nvim-0.3.0') || has('patch-8.1.001') ) && executable('node')
+"     Plug 'neoclide/vim-node-rpc'
+"     Plug 'Shougo/neco-vim'
+"     Plug 'neoclide/coc-neco'
+"     Plug 'neoclide/coc-sources'
+"     Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+"     autocmd FileType json syntax match Comment +\/\/.\+$+
+"     " Plug 'Shougo/deoplete.nvim'
+"     " Plug 'roxma/nvim-yarp'
+"     " Plug 'roxma/vim-hug-neovim-rpc'
+"     " Plug 'Shougo/neco-vim'
+"     " Plug 'zchee/deoplete-jedi'
+" else
+"     Plug 'lifepillar/vim-mucomplete'
+" endif
 " Plug 'lifepillar/vim-mucomplete'
 " Autocompletion Plugins }}}
 
@@ -204,6 +204,8 @@ endif
 " Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " Plug 'prabirshrestha/asyncomplete-buffer.vim'
 " Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
+
+Plug 'PratikBhusal/vim-darkokai'
 
 
 if has('nvim')
@@ -329,6 +331,9 @@ Pack 'bling/vim-airline' | Pack 'vim-airline/vim-airline-themes'
 Pack 'Yggdroot/indentLine'
 Pack 'Yggdroot/hiPairs'
 Pack 'luochen1990/rainbow'
+if has('nvim')
+    Pack 'lukas-reineke/indent-blankline.nvim'
+endif
 " Visual Packins }}}
 
 " Navigation plugins {{{
@@ -367,7 +372,8 @@ if executable('clang')
 endif
 if executable('cmake')
     Pack 'pboettch/vim-cmake-syntax', { 'for': 'cmake' }
-    Pack 'vhdirk/vim-cmake'
+    " Pack 'vhdirk/vim-cmake'
+    Pack 'ilyachur/cmake4vim'
 endif
 if executable('latexmk')
     Pack 'lervag/vimtex', { 'for': ['tex', 'latex'] }
@@ -384,6 +390,7 @@ Pack 'PratikBhusal/cSyntaxAfter'
 
 " Quality of life plugins {{{
 " Pack 'rstacruz/vim-closer'
+Pack 'jdhao/better-escape.vim'
 Pack 'tmsvg/pear-tree'
 Pack 'tpope/vim-commentary'
 Pack 'markonm/traces.vim'

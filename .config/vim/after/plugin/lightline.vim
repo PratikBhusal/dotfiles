@@ -1,4 +1,4 @@
-if !exists('*lightline#init')
+if !exists('#lightline')
     finish
 endif
 
@@ -87,3 +87,5 @@ endfunction
 let g:lightline.component_function.gitstatus = 'LightlineVCSInfo'
 
 call lightline#init()
+" call lightline#colorscheme()
+" call lightline#enable()

@@ -6,10 +6,12 @@ if executable('flake8')
 endif
 if executable('mypy')
     call add(b:ale_linters, 'mypy')
+    let g:ale_python_mypy_options = '--no-pretty'
 endif
-" if executable('bandit')
-"     call add(b:ale_linters, 'bandit')
-" endif
+if executable('bandit')
+    call add(b:ale_linters, 'bandit')
+endif
+
 if executable('vulture')
     call add(b:ale_linters, 'vulture')
 endif

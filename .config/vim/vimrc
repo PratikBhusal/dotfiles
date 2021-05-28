@@ -152,9 +152,10 @@ endif
 augroup auto_quickfix_window
     autocmd!
     autocmd CompleteDone * if pumvisible() == 0|silent! pclose|endif
-    autocmd QuickFixCmdPost [^l]* nested cwindow
-    autocmd QuickFixCmdPost    l* nested lwindow
+    " autocmd QuickFixCmdPost [^l]* nested cwindow
+    " autocmd QuickFixCmdPost    l* nested lwindow
 augroup END
+
 inoremap <C-@> <C-Space>
 " inoremap <expr> <silent> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <silent> <expr>  <C-n> pumvisible() ? '<C-n>' :
@@ -228,6 +229,11 @@ autocmd BufReadPost *
   \ |   exe "normal! g`\""
   \ | endif
 
+" Detected Filetypes {{{
+augroup FiletypesDetected
+    autocmd!
+augroup END
+" Detected Filetypes }}}
 
 if exists('&emoji')
     set noemoji
