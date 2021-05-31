@@ -9,6 +9,10 @@ autoload -U colors && colors
 [ -s ~/.config/zsh/aliases.zsh ] && . ~/.config/zsh/aliases.zsh
 
 
+# shellcheck source=.config/zsh/functions.zsh
+[ -s ~/.config/zsh/functions.zsh ] && . ~/.config/zsh/functions.zsh
+
+
 if command -v vim 1> /dev/null 2>&1; then
     export VISUAL=vim
     export EDITOR="$VISUAL"
@@ -22,8 +26,14 @@ HISTFILE=~/.cache/zsh/history
 
 # Enable command auto-completion
 autoload -Uz compinit
+# zmodload zsh/complist
+
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+    compinit;
+else
+    compinit -C;
+fi;
 zmodload zsh/complist
-compinit
 
 # Arrow-key driven interface
 zstyle ':completion:*' menu select
@@ -32,8 +42,8 @@ zstyle ':completion:*' menu select
 # eval "$(dircolors)" # Do not need to call if done in aliases.zsh file
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-# auto-completion for aliases
-setopt COMPLETE_ALIASES
+# disable auto-completion for aliases
+# setopt COMPLETE_ALIASES
 
 # Change directory via directory name
 setopt autocd
@@ -60,6 +70,11 @@ bindkey -M menuselect 'up' vi-up-line-or-history
 bindkey -M menuselect 'right' vi-forward-char
 # Fix backspace bug when switching modes
 bindkey "^?" backward-delete-char
+
+
+# In normal mode, type spacebar to edit command in vim
+autoload edit-command-line; zle -N edit-command-line
+bindkey -M vicmd ' ' edit-command-line
 
 
 # # Change cursor shape for different vi modes.

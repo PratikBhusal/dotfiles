@@ -6,7 +6,9 @@
 # ${PLUGIN NAME}"
 
 # Provide command autosuggestions
+# https://github.com/zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-autosuggestions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=7'
 
 # Mention aliases that you've set but are not using
 # zinit light MichaelAquilina/zsh-you-should-use
