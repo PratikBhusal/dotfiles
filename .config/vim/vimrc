@@ -222,6 +222,8 @@ set confirm
 set fileformat=unix
 set fileformats=unix,dos
 set noerrorbells novisualbell t_vb=
+set nofixendofline
+set noendofline
 nnoremap <silent> <TAB> :bnext<cr>
 " Return to last edit position
 autocmd BufReadPost *
