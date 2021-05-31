@@ -6,8 +6,8 @@ case "$-" in
     *)   return ;;
 esac
 
-# enable color support of ls and also add handy aliases
-if [ $DOTFILES_MACHINE = 'Linux' ]; then
+# enable color support of and add handy aliases
+if [ "$DOTFILES_MACHINE" = 'Linux' ]; then
     if command -v dircolors >/dev/null 2>&1 ; then
 
         if [ -r ~/.dircolors ]; then
@@ -26,9 +26,26 @@ if [ $DOTFILES_MACHINE = 'Linux' ]; then
     else
         alias ls='ls -hp --group-directories-first'
     fi
-elif [ $DOTFILES_MACHINE = 'Mac' ]; then
+elif [ "$DOTFILES_MACHINE" = 'Mac' ]; then
         alias ls='ls -hp'
 fi
+
+if command -v lsd >/dev/null; then
+    alias ls='lsd -hF --group-dirs first'
+    alias tree='lsd -hF --group-dirs first --tree'
+
+elif [ "$DOTFILES_MACHINE" = 'Linux' ]; then
+    if command -v dircolors >/dev/null 2>&1 ; then
+        alias ls='ls -hp --group-directories-first --color=auto'
+        # alias dir='dir --color=auto'
+        # alias vdir='vdir --color=auto
+    else
+        alias ls='ls -hp --group-directories-first'
+    fi
+elif [ "$DOTFILES_MACHINE" = 'Mac' ]; then
+    alias ls='ls -hp'
+fi
+
 
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias cp='cp -i'
