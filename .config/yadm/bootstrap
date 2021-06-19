@@ -1,0 +1,37 @@
+#!/usr/bin/env sh
+
+# Execute all executable files (excluding templates and editor backups) in the
+# $XDG_CONFIG_HOME/yadm/bootstrap.d directory when run.
+
+set -eu
+
+BOOTSTRAP_D="${XDG_CONFIG_HOME:-$HOME/.config}/yadm/bootstrap.d"
+
+# Try the fallback if our preferred location does not work
+if [ ! -d "$BOOTSTRAP_D" ]; then
+    echo "Warning: bootstrap directory '$BOOTSTRAP_D' not found." >&2
+    echo "Trying fallback: $0.d" >&2
+    BOOTSTRAP_D="$0.d"
+fi
+
+# If fallback fails, throw and error and exit
+if [ ! -d "$BOOTSTRAP_D" ]; then
+    echo "Error: Fallback bootstrap directory '$BOOTSTRAP_D' not found" >&2
+    exit 1
+fi
+
+
+find "$BOOTSTRAP_D" -type f | sort | while IFS= read -r bootstrap; do
+    # 1. Check that the file is executable
+    # 2. Check that the does not contain the substring '##' (ie template files)
+    # nor end with '~' (ie editor backup files)
+    if [ -x "$bootstrap" ] \
+    && ! echo "$bootstrap" | grep -e "##|~$" > /dev/null; then
+        # Check that the bootstrap file ran successfully. If not, throw an
+        # error.
+        if ! "$bootstrap"; then
+            echo "Error: bootstrap '$bootstrap' failed" >&2
+            exit 1
+        fi
+    fi
+done
