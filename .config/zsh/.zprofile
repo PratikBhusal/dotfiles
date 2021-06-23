@@ -5,6 +5,5 @@ if [ -f "$HOME/.profile" ]; then
     . "$HOME/.profile"
 fi
 
-eval "$(pipenv --completion)"
-# eval "$(direnv hook zsh)"
-. ~/.fzf.zsh
+
+command -v pipenv 1> /dev/null 2>&1 && eval "$(pipenv --completion)"

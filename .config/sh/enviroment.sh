@@ -41,8 +41,9 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 # export QT_QPA_PLATFORMTHEME=gtk2
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-# shellcheck source=functions.sh
-[ -r "$HOME"/.config/sh/functions.sh ] && . "$HOME"/.config/sh/functions.sh
+# shellcheck source=functions.d/path_manipulation.sh
+[ -r "$HOME"/.config/sh/functions.d/path_manipulation.sh ] && \
+    . "$HOME"/.config/sh/functions.d/path_manipulation.sh
 
 # set PATH so it includes user's private bin if it exists
 prepend_to_path "/usr/local/bin"

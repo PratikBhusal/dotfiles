@@ -10,7 +10,6 @@ if [ "$(command -v nnn)" ] && [ -s ~/.config/nnn/misc/quitcd.bash_zsh ]; then
     alias nnn="nnncd -Ad"
 fi
 
-
 if command -v trash >/dev/null 2>&1; then
     alias rm='echo "Use \"trash\". If you meant rm, use \"\\\rm\"."; false'
 else
