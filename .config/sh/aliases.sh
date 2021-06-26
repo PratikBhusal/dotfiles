@@ -47,7 +47,11 @@ elif [ "$DOTFILES_MACHINE" = 'Mac' ]; then
 fi
 
 
-alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+if [ -d "$HOME/.dotfiles" ]; then
+    alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+    alias dotfilesedit='GIT_DIR=$HOME/.dotfiles ${VISUAL:-${EDITOR:-vim}}'
+fi
+
 alias cp='cp -i'
 alias mv='mv -i'
 

@@ -40,6 +40,7 @@ if echo "$EXISTING_FILES" | head -c1 | grep -e '.'; then
     | sh
 fi
 
+dotfiles config user.name  PratikBhusal
 dotfiles config user.email PratikBhusal@users.noreply.github.com
 
 if [ -x "$(command -v rsync)" ]; then
@@ -84,3 +85,4 @@ else
 fi
 
 # dotfiles config --local status.showUntrackedFiles no
+dotfiles config --local core.worktree "$HOME"
