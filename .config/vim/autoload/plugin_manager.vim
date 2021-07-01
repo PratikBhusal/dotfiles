@@ -351,7 +351,9 @@ Pack 'easymotion/vim-easymotion'
 Pack 'aykamko/vim-easymotion-segments'
 Pack 'chaoren/vim-wordmotion'
 
-if executable('go')
+if executable('fzf')
+    Pack 'junegunn/fzf.vim'
+elseif executable('go')
     Pack 'junegunn/fzf', { 'do': {-> system('./install --all')} }
     Pack 'junegunn/fzf.vim'
 else
