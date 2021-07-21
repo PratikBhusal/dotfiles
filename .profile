@@ -10,8 +10,5 @@
 # shellcheck source=.config/sh/enviroment.sh
 [ -r ~/.config/sh/enviroment.sh ] && . ~/.config/sh/enviroment.sh
 
-
 # startx should always be the last line
 [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ] && startx
-
-

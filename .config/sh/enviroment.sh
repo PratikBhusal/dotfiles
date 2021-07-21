@@ -47,6 +47,7 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 
 # set PATH so it includes user's private bin if it exists
 prepend_to_path "/usr/local/bin"
+prepend_to_path "/usr/local/sbin"
 prepend_to_path "$HOME/bin"
 prepend_to_path "$HOME/.local/bin"
 append_to_path "$HOME/.config/dotfiles/scripts"

@@ -92,6 +92,7 @@ if command -v ipython >/dev/null; then
     alias python3=interactive_python
 fi
 
+alias diff='diff -U 0'
 
 
 

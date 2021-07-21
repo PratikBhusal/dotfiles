@@ -388,6 +388,7 @@ endif
 " Syntax Packins {{{
 Pack 'sheerun/vim-polyglot'
 Pack 'PratikBhusal/cSyntaxAfter'
+Pack 'aklt/plantuml-syntax'
 " Syntax Packins }}}
 
 " Quality of life plugins {{{
@@ -409,7 +410,7 @@ endif
 " Quality of life plugins }}}
 
 
-if executable('python3')
+if executable('python3') && has('python3')
     Pack 'SirVer/ultisnips' | Pack 'honza/vim-snippets'
 endif
 Pack 'tpope/vim-dispatch'

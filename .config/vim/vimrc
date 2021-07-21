@@ -128,7 +128,8 @@ set ignorecase smartcase
 " Make searching less tedious (Without it put \c (insen) or \C (sen) at end) }}}
 
 " Set tab intent to 4 spaces {{{ -----------------------------------------------
-set tabstop=8 softtabstop=4 expandtab shiftwidth=4 smarttab
+set tabstop=8 expandtab smarttab
+set softtabstop=4 shiftwidth=4
 " Set tab intent to 4 spaces }}} -----------------------------------------------
 
 " Folding {{{ ------------------------------------------------------------------
@@ -206,6 +207,9 @@ set fillchars=
 exec 'set fillchars+=vert:' . nr2char('0x2503', 'utf-8')
 exec 'set fillchars+=fold:' . nr2char('0x2500', 'utf-8')
 exec 'set fillchars+=diff:' . nr2char('0x2500', 'utf-8')
+if has('nvim') || has('patch-8.2.2508')
+    exec 'set fillchars+=eob:\' . nr2char('0x20', 'utf-8')
+endif
 " Fillchars }}}
 
 " Coc.nvim bandadge fixes {{{
@@ -224,6 +228,7 @@ set fileformats=unix,dos
 set noerrorbells novisualbell t_vb=
 set nofixendofline
 set noendofline
+set splitright " new vertical splits are on the right
 nnoremap <silent> <TAB> :bnext<cr>
 " Return to last edit position
 autocmd BufReadPost *
