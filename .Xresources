@@ -1,5 +1,0 @@
-#include ".Xresources.d/terminal"
-#include ".Xresources.d/st"
-#include ".Xresources.d/sxiv"
-#include ".Xresources.d/dmenu"
-#include ".Xresources.d/xterm"
