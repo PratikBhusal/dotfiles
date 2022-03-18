@@ -1,7 +1,0 @@
-! vim: ft=xdefaults:
-#include "base-16-molokai-256"
-
-! sxiv.background: base00
-sxiv.startWithAlphaLayer: true
-sxiv.selColor: #cc0e0e
-sxiv.defaultThumbnailSize: 10
