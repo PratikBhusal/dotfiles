@@ -1,9 +1,0 @@
-#!/usr/bin/env sh
-
-export NNN_BMS='u:~'
-
-export NNN_TRASH=1
-
-# shellcheck disable=SC2016
-export NNN_PLUG='t:-_sensible-terminal &;o:-fzopen;c:-fzcd;d:-dragdrop'
-# export NNN_PLUG='t:-_sensible-terminal &;o:-fzopen;c:-fzcd'

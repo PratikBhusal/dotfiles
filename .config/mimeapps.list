@@ -1,8 +1,0 @@
-[Default Applications]
-application/pdf=org.pwmt.zathura.desktop
-inode/directory=nnn.desktop
-
-[Added Associations]
-application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
-
-[Removed Associations]

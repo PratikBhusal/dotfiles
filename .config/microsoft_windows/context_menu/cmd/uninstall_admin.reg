@@ -1,8 +1,0 @@
-Windows Registry Editor Version 5.00
-
-[-HKEY_CLASSES_ROOT\Directory\shell\MenuCmd]
-[-HKEY_CLASSES_ROOT\Directory\background\shell\MenuCmd]
-[-HKEY_CLASSES_ROOT\Directory\ContextMenus\MenuCmd\shell\open]
-[-HKEY_CLASSES_ROOT\Directory\ContextMenus\MenuCmd\shell\open\command]
-[-HKEY_CLASSES_ROOT\Directory\ContextMenus\MenuCmd\shell\runas]
-[-HKEY_CLASSES_ROOT\Directory\ContextMenus\MenuCmd\shell\runas\command]

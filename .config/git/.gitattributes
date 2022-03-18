@@ -1,7 +1,0 @@
-# Auto detect text files and perform LF normalization. Does not handle the files
-# below.
-*     text=auto
-
-# Windows Files
-*.bat text eol=crlf
-*.cmd text eol=crlf
