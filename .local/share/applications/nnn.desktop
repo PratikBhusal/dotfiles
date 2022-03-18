@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=NNN
-Comment=Launches the nnn file manager
-Icon=utilities-terminal
-Terminal=false
-Exec=nnn-fm
-Categories=ConsoleOnly;System;FileTools;FileManager
-MimeType=inode/directory;
