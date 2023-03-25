@@ -81,7 +81,7 @@
 # Use CAPS LOCK with Karabiner Elements to map it to HYPER
 
 
-cmd - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
+# cmd - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
 
 # Restart yabai
 ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"

@@ -226,9 +226,8 @@ set confirm
 set fileformat=unix
 set fileformats=unix,dos
 set noerrorbells novisualbell t_vb=
-set nofixendofline
-set noendofline
 set splitright " new vertical splits are on the right
+" set splitbelow " new horizontal splits are on the bottom
 nnoremap <silent> <TAB> :bnext<cr>
 " Return to last edit position
 autocmd BufReadPost *

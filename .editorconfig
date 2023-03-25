@@ -17,3 +17,11 @@ indent_size = 3
 
 [*.ts]
 indent_size = 2
+
+[*.{kt,kts}]
+# default IntelliJ IDEA style, same as alphabetical, but with "java", "javax", "kotlin" and alias imports in the end of the imports list
+ij_kotlin_imports_layout=*,java.**,javax.**,kotlin.**,^
+# disabled_rules=import-ordering
+
+[*.{json,avsc}]
+indent_size = 2

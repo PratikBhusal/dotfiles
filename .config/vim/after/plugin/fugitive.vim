@@ -1,2 +1,2 @@
-nnoremap <leader>gg :Gstatus<cr>
-nnoremap <leader>gp :Gpush<cr>
+nnoremap <leader>gg :Git<cr>
+nnoremap <leader>gp :Git push<cr>

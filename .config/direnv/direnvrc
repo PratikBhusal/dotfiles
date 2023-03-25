@@ -17,18 +17,20 @@ find_up_dir() {
 
 
 add_extra_vim_dir() {
-    local extravim="$(find_up_dir .vim/)"
+    local extravim
+    extravim="$(find_up_dir .vim/)"
     if [ -n "$extravim" ]; then
         # echo "Adding extra .vim/: ${extravim}"
-        path_add DIRENV_VIM_DIR $extravim
+        path_add DIRENV_VIM_DIR "$extravim"
     fi
 }
 
 add_extra_vimrc() {
-    local extravim="$(find_up .vimrc)"
+    local extravim
+    extravim="$(find_up .vimrc)"
     if [ -n "$extravim" ]; then
         # echo "Adding extra .vim/: ${extravim}"
-        path_add DIRENV_VIMRC $extravim
+        path_add DIRENV_VIMRC "$extravim"
     fi
 }
 
@@ -68,6 +70,30 @@ layout_anaconda() {
         (>&2 echo No environment specified);
         exit 1;
     fi;
+}
+
+layout_poetry() {
+    PYPROJECT_TOML="${PYPROJECT_TOML:-pyproject.toml}"
+    if [[ ! -f "$PYPROJECT_TOML" ]]; then
+        log_status "No pyproject.toml found. Executing \`poetry init\` to create a \`$PYPROJECT_TOML\` first."
+        poetry init --python ^$(python3 --version 2>/dev/null | cut -d' ' -f2 | cut -d. -f1-2)
+    fi
+
+    if [[ -d ".venv" ]]; then
+        VIRTUAL_ENV="$(pwd)/.venv"
+    else
+        VIRTUAL_ENV=$(poetry env info --path 2>/dev/null ; true)
+    fi
+
+    if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV ]]; then
+        log_status "No virtual environment exists. Executing \`poetry install\` to create one."
+        poetry install
+        VIRTUAL_ENV=$(poetry env info --path)
+    fi
+
+    PATH_add "$VIRTUAL_ENV/bin"
+    export POETRY_ACTIVE=1
+    export VIRTUAL_ENV
 }
 
 init_py_venv_layout() {

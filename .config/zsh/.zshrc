@@ -5,6 +5,9 @@ autoload -U colors && colors
 
 [ "$LANG" = '' ] && export LANG=en_US.UTF-8
 
+# shellcheck source=.config/sh/functions.d/extract_audio.sh
+[ -s ~/.config/sh/functions.d/extract_audio.sh ] && . ~/.config/sh/functions.d/extract_audio.sh
+
 # shellcheck source=.config/zsh/aliases.zsh
 [ -s ~/.config/zsh/aliases.zsh ] && . ~/.config/zsh/aliases.zsh
 
@@ -13,7 +16,10 @@ autoload -U colors && colors
 [ -s ~/.config/zsh/functions.zsh ] && . ~/.config/zsh/functions.zsh
 
 
-if command -v vim 1> /dev/null 2>&1; then
+if command -v nvim 1> /dev/null 2>&1; then
+    export VISUAL="nvim"
+    export EDITOR="$VISUAL"
+elif command -v vim 1> /dev/null 2>&1; then
     export VISUAL=vim
     export EDITOR="$VISUAL"
 fi

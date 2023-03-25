@@ -17,3 +17,10 @@
 	tool = vimdiff
 [commit]
 	verbose     = true
+# [merge]
+# 	ff = no
+# git log --exclude=refs/remotes/\* --all --oneline --graph
+[alias]
+    st = status
+    loglocalgraph = log --exclude=refs/remotes/* --all --oneline --graph
+    cane= commit --amend --no-edit

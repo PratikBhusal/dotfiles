@@ -10,6 +10,10 @@ sshcd() {
     ssh -t "$1" "cd \"$2\"; exec \$SHELL -l";
 }
 
+svgtopng() {
+    basename "$1" .svg | xargs -I {} inkscape -b FFFFFF -d 384 {}.svg -o {}.png
+}
+
 mkchdir () {
     MKDIR_CMD="mkdir"
     if man $MKDIR_CMD | grep -E "^\s+\-.*v\b" > /dev/null; then

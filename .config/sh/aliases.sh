@@ -105,4 +105,8 @@ alias diff='diff -U 0'
 # export QT_STYLE_OVERRIDE=gtk
 # export QT_SELECT=qt5
 
-command -v mpv >/dev/null 2>&1 && alias streamaudio="mpv --no-video --no-cache --volume=50"
+# command -v mpv >/dev/null 2>&1 && alias streamaudio="mpv --no-video --no-cache --volume=50"
+command -v mpv >/dev/null 2>&1 && alias streamaudio="mpv --no-video --volume=50"
+command -v mpv >/dev/null 2>&1 && alias streamlofi="mpv --no-video --volume=50 'https://www.youtube.com/watch?v=jfKfPfyJRdk'"
+
+command -v joplin >/dev/null 2>&1 && alias joplin="joplin --profile ~/.config/joplin-desktop"

@@ -9,6 +9,10 @@ let &packpath = &runtimepath
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 if empty($MYVIMRC) | let $MYVIMRC = expand('<sfile>:p') | endif
+
+" Jump to the last position when reopening a file (except Git commit)
+autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
 source $XDG_CONFIG_HOME/vim/vimrc
 " Vim Backwards Compatibility }}} ----------------------------------------------
 

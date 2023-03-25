@@ -38,7 +38,7 @@ function! s:select_plugin_manager() abort
                 \ $XDG_CONFIG_HOME . '/vim/pack/minpac/opt/minpac'
         endif
         if !filereadable($XDG_CONFIG_HOME . '/vim/autoload/plugpac.vim')
-            execute 'silent !curl -fLo ' . $XDG_CONFIG_HOME . '/vim/autoload/plugpac.vim') . ' --create-dirs ' .
+            execute 'silent !curl -fLo ' . $XDG_CONFIG_HOME . '/vim/autoload/plugpac.vim' . ' --create-dirs ' .
                 \ 'https://raw.githubusercontent.com/bennyyip/plugpac.vim/master/plugpac.vim'
         endif
         autocmd VimEnter * PackUpdate | source $MYVIMRC
@@ -54,12 +54,215 @@ function! s:select_plugin_manager() abort
 endfunction
 " Package Manager Selecter }}}
 
+" Generate Plugin List {{{ -----------------------------------------------------
+function! s:generate_plugin_list(plugin_manager) abort
+    echo a:plugin_manager
+    let l:plugins = []
+
+    " Visual Plugins {{{
+    "   {'name': 'tomasr/molokai'},
+    "   {'name': 'junegunn/rainbow_parentheses.vim'},
+    let l:plugins += [
+    \   {'name': 'bling/vim-airline'},
+    \   {'name': 'vim-airline/vim-airline-themes'},
+    \   {'name': 'luochen1990/rainbow'},
+    \]
+
+    if has('nvim')
+        let l:plugins += [
+        \   {'name': 'lukas-reineke/indent-blankline.nvim'},
+        \   {'name': 'nvim-treesitter/nvim-treesitter', 'options': {'do': ':TSUpdate'}},
+        \]
+    else
+        let l:plugins += [
+        \   {'name': 'Yggdroot/indentLine'},
+        \]
+    endif
+
+    if exists('*reltimefloat')
+        let l:plugins += [
+        \   {'name': 'Yggdroot/hiPairs'},
+        \]
+    endif
+
+    if !g:windows
+        let l:plugins += [
+        \   {'name': 'ryanoasis/vim-devicons'},
+        \]
+    endif
+    " Visual Plugins }}}
+
+    " Navigation Plugins {{{
+    let l:plugins += [
+    \   {'name': 'justinmk/vim-dirvish'},
+    \   {'name': 'scrooloose/nerdtree', 'options': {'on': 'NERDTreeToggle'}},
+    \   {'name': 'easymotion/vim-easymotion'},
+    \   {'name': 'aykamko/vim-easymotion-segments'},
+    \   {'name': 'chaoren/vim-wordmotion'},
+    \]
+
+    if executable('fzf')
+        Pack 'junegunn/fzf.vim'
+        let l:plugins += [
+        \   {'name': 'junegunn/fzf.vim'},
+        \]
+    elseif executable('go')
+        let l:plugins += [
+        \   {'name': 'scrooloose/nerdtree', 'options': {'do': {-> system('./install --all')}} },
+        \   {'name': 'junegunn/fzf.vim'},
+        \]
+    else
+        let l:plugins += [
+        \   {'name': 'ctrlpvim/ctrlp.vim'},
+        \]
+    endif
+    " Navigation Plugins }}}
+
+    " Quality of Life Plugins {{{
+    " \   {'name': 'jbgutierrez/vim-better-comments'},
+    let l:plugins += [
+    \   {'name': 'jdhao/better-escape.vim'},
+    \   {'name': 'tpope/vim-commentary'},
+    \   {'name': 'markonm/traces.vim'},
+    \   {'name': 'andymass/vim-matchup'},
+    \   {'name': 'junegunn/vim-easy-align'},
+    \   {'name': 'Konfekt/FastFold'},
+    \   {'name': 'lambdalisue/suda.vim'},
+    \   {'name': 'sheerun/vim-polyglot'},
+    \   {'name': (v:version < 800) ? 'PratikBhusal/pear-tree' : 'tmsvg/pear-tree'},
+    \]
+
+    if !has('nvim')
+        let l:plugins += [
+        \   {'name': 'tpope/vim-sensible'},
+        \]
+
+        if v:version >= 802
+            let l:plugins += [
+            \   {'name': 'axelf4/vim-strip-trailing-whitespace'},
+            \]
+        endif
+    else
+        let l:plugins += [
+        \   {'name': 'axelf4/vim-strip-trailing-whitespace'},
+        \]
+    endif
+
+    " Quality of Life Plugins }}}
+
+    " Filetype Plugin - markdown {{{
+    let l:plugins += [
+    \   {'name': 'masukomi/vim-markdown-folding', 'options': {'for': 'markdown'}},
+    \   {'name': 'tpope/vim-markdown', 'options': {'for': 'markdown'}},
+    \]
+    " Filetype Plugin - markdown }}}
+
+    " Filetype Plugin - python {{{
+    if has('python3') || has('python')
+        let l:plugins += [
+        \   {'name': 'python-mode/python-mode', 'options': {'for': 'python', 'branch': 'develop'}},
+        \   {'name': 'tmhedberg/SimpylFold', 'options': {'for': 'python'}},
+        \]
+    endif
+    " Fileytpe Plugin - python }}}
+
+    " Filetype Plugin - cmake {{{
+    if executable('cmake')
+        let l:plugins += [
+        \   {'name': 'pboettch/vim-cmake-syntax', 'options': {'for': 'cmake'}},
+        \   {'name': 'tmhedberg/SimpylFold', 'options': {'for': 'cmake'}},
+        \]
+    endif
+    " Filetype Plugin - cmake }}}
+
+    " Filetype Plugin - latex {{{
+    if executable('latexmk')
+        let l:plugins += [
+        \   {'name': 'lervag/vimtex', 'options': {'for': ['tex', 'latex']}},
+        \]
+    endif
+    " Filetype Plugin - latex }}}
+
+    " Filetype Plugin - java {{{
+    if executable('java')
+        let l:plugins += [
+        \   {'name': 'uiiaoo/java-syntax.vim', 'options': {'for': 'java'}},
+        \]
+    endif
+    " Filetype Plugin - java }}}
+
+    " Filetype Plugin - java {{{
+    if executable('java')
+        let l:plugins += [
+        \   {'name': 'uiiaoo/java-syntax.vim', 'options': {'for': 'java'}},
+        \]
+    endif
+    " Filetype Plugin - java }}}
+
+    " Git Integration {{{
+    let l:plugins += [
+    \   {'name': 'tpope/vim-fugitive'},
+    \   {'name': 'airblade/vim-gitgutter'},
+    \]
+    " Git Integration }}}
+
+    " Autocompletion {{{
+    if executable('python3') && has('python3')
+        let l:plugins += [
+        \   {'name': 'SirVer/ultisnips'},
+        \   {'name': 'honza/vim-snippets'},
+        \]
+    endif
+    " Autocompletion }}}
+
+    " Miscellaneous {{{
+    if has('nvim')
+        let l:plugins += [
+        \   {'name': 'tpope/vim-sensible'},
+        \]
+    endif
+
+    " Miscellaneous }}}
+
+    " Plugins for Consideration {{{
+
+    " Plugins for Consideration }}}
+
+    " Direnv - Local Vim Configuration {{{
+    if !g:windows && executable('direnv')
+        call s:direnv_init()
+
+        if exists('$DIRENV_VIM_DIR')
+            let l:plugins += [
+            \   {'name': $DIRENV_VIM_DIR},
+            \]
+        endif
+    endif
+    " Direnv - Local Vim Configuration }}}
+
+    return l:plugins
+endfunction
+function! Global_test_generate_function_list() abort
+
+    " for l:plugin in s:generate_plugin_list(s:select_plugin_manager())
+    "     echo l:plugin['name']
+    "     if has_key(l:plugin, 'options')
+    "         echo l:plugin['options']
+    "     else
+    "         echo '{}'
+    "     endif
+    " endfor
+    " return 'done'
+    return s:generate_plugin_list(s:select_plugin_manager())
+endfunction
+" Generate Plugin List }}} ---------------------------------------------------------
+
 " Vim-Plug {{{ -----------------------------------------------------------------
 function! s:vim_plug() abort
 
 " Vim-Plug automatic download {{{
 " if empty(glob('$HOME/.config/vim/autoload/plug.vim'))
-if !filereadable($XDG_CONFIG_HOME . '/vim/autoload/plug.vim'))
+if !filereadable($XDG_CONFIG_HOME . '/vim/autoload/plug.vim')
 endif
 " }}}
 
@@ -69,6 +272,8 @@ if g:windows
     Plug '$HOME/.config/vim/pack/osplugin/opt/osplugin-windows'
 elseif g:linux
     Plug '$HOME/.config/vim/pack/osplugin/opt/osplugin-linux'
+elseif g:macOS
+    Plug '$HOME/.config/vim/pack/osplugin/opt/osplugin-mac'
 endif
 
 " if has('win32unix') || !has('gui_running')
@@ -301,7 +506,7 @@ if g:windows
 elseif g:linux
     packadd osplugin-linux
 elseif g:macOS
-    packadd osplugin-linux
+    packadd osplugin-mac
 endif
 
 " if has('win32unix') || !has('gui_running')
@@ -313,13 +518,15 @@ endif
 "         Pack 'PratikBhusal/vim-SnippetsCompleteMe'
 "     endif
 " endif
-if isdirectory(expand('$HOME/.vim/pack/src/opt/vim-grip'))
+" if isdirectory(expand('$HOME/.vim/pack/src/opt/vim-grip'))
+if isdirectory(expand('$HOME/.config/vim/pack/src/opt/vim-grip'))
     autocmd LazyLoadPlugin Filetype markdown packadd vim-grip
+    " Pack expand('file://$HOME/.config/vim/pack/src/opt/vim-grip'), { 'for': 'markdown' }
 else
     Pack 'PratikBhusal/vim-grip', { 'for': 'markdown' }
 endif
 
-if !isdirectory(expand('$HOME/.vim/pack/src/start/vim-darkokai'))
+if !isdirectory(expand('$HOME/.config/vim/pack/src/start/vim-darkokai'))
     Pack 'PratikBhusal/vim-darkokai'
 endif
 
@@ -328,12 +535,18 @@ Pack 'tomasr/molokai', { 'type': 'opt' }
 Pack 'bling/vim-airline' | Pack 'vim-airline/vim-airline-themes'
 " add vim-lightline. May eventually replace vim-airline
 " Pack 'itchyny/lightline.vim'
-Pack 'Yggdroot/indentLine'
+if has('nvim')
+    " let g:indent_blankline_show_trailing_blankline_indent = v:false
+    " let g:indent_blankline_debug = v:true
+    Pack 'lukas-reineke/indent-blankline.nvim'
+
+    Pack 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+else
+    Pack 'Yggdroot/indentLine'
+endif
 Pack 'Yggdroot/hiPairs'
 Pack 'luochen1990/rainbow'
-if has('nvim')
-    Pack 'lukas-reineke/indent-blankline.nvim'
-endif
+" Pack 'junegunn/rainbow_parentheses.vim'
 " Visual Packins }}}
 
 " Navigation plugins {{{
@@ -341,6 +554,7 @@ Pack 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " Replace Netrw with Dirvish {{{
 Pack 'justinmk/vim-dirvish'
+Pack 'roginfarrer/vim-dirvish-dovish'
 let g:loaded_netrwPlugin = 1
 command! -nargs=? -complete=dir Explore Dirvish <args>
 command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
@@ -488,6 +702,12 @@ Pack 'thezeroalpha/vim-relatively-complete'
 
 Pack 'Xuyuanp/nerdtree-git-plugin'
 
+Pack 'masukomi/vim-markdown-folding', { 'for': 'markdown' }
+Pack 'tpope/vim-markdown', { 'for': 'markdown' }
+" Pack 'vim-pandoc/vim-pandoc', { 'for': 'markdown' }
+" Pack 'vim-pandoc/vim-pandoc-syntax', { 'for': 'markdown' }
+" Pack 'vim-pandoc/vim-pandoc-syntax'
+
 " Pack 'goerz/jupytext.vim'
 
 " if has('nvim')
@@ -556,7 +776,7 @@ Pack 'freitass/todo.txt-vim'
 " }}}
 
 " Direnv - Local vim configuration {{{ -----------------------------------------
-if g:linux && executable('direnv')
+if !g:windows && executable('direnv')
     call s:direnv_init()
 
     if exists('$DIRENV_VIM_DIR')
