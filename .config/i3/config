@@ -35,16 +35,16 @@ font pango:monospace 10
 # font pango:DejaVu Sans Mono 10
 
 # Border Settings
-hide_edge_borders both
-new_window pixel 0
-new_float pixel 0
+hide_edge_borders smart
+default_border pixel 1
+default_floating_border pixel 0
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 
 # bindsym --release Print exec xfce4-screenshooter -f
-set $Screenshooter maim -u -f "png" -m 1 ~/Pictures/Screenshots/$(date +%F-%T).png
+set $Screenshooter maim -u -f "png" -m 1 ~/Pictures/Screenshots/$(date +%F-%H-%M-%S).png
 set $screenshot (f) fullscreen, (s) selection
 mode "$screenshot" {
     bindsym f exec --no-startup-id $hide_bar && $Screenshooter -d 0.1 -q && $show_bar, mode "default"
@@ -148,10 +148,10 @@ bar {
 
     colors {
         set $ws-bg-color            #000000
-        set $ws-text-color          #FFFFFF
-        set $ws-active-bg-color     #202020
-        set $ws-urgent-bg-color     #900000
-        set $ws-inactive-text-color #888888
+        set $ws-text-color          #f8f8f2
+        set $ws-active-bg-color     #232526
+        set $ws-urgent-bg-color     #f92672
+        set $ws-inactive-text-color #7E8E91
 
         background $ws-bg-color
         # color-class      border              background          text
@@ -160,6 +160,7 @@ bar {
         urgent_workspace   $ws-urgent-bg-color $ws-urgent-bg-color $ws-text-color
 
     }
+    binding_mode_indicator yes
 }
 
 # Volume Controls {{{

@@ -24,3 +24,5 @@
     st = status
     loglocalgraph = log --exclude=refs/remotes/* --all --oneline --graph
     cane= commit --amend --no-edit
+[init]
+	defaultBranch = main

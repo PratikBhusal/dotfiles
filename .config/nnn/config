@@ -3,7 +3,32 @@
 export NNN_BMS='u:~'
 
 export NNN_TRASH=1
+if command -v gio 1> /dev/null 2>&1; then
+    export NNN_TRASH=2
+elif command -v trash 1> /dev/null 2>&1; then
+    export NNN_TRASH=1
+fi
+
+command -v pistol 1> /dev/null 2>&1 && export USE_PISTOL=1
+
+export NNN_FIFO=/tmp/nnn.fifo
 
 # shellcheck disable=SC2016
-export NNN_PLUG='t:-_sensible-terminal &;o:-fzopen;c:-fzcd;d:-dragdrop'
+export NNN_PLUG='t:-_sensible-terminal&;o:-fzopen;c:-fzcd;d:-dragdrop;p:preview-tui;P:preview-tabbed'
 # export NNN_PLUG='t:-_sensible-terminal &;o:-fzopen;c:-fzcd'
+
+# NNN colors
+block_device="04"
+char_device="04"
+directory="04"
+executable="02"
+regular="0f"
+hard_link="60"
+symbolic_link="06"
+details="07"
+orphaned_symbolic_link="01"
+FIFO="d6"
+socket="ab"
+other="02"
+
+export NNN_FCOLORS="$block_device$char_device$directory$executable$regular$hard_link$symbolic_link$details$orphaned_symbolic_link$FIFO$socket$other"
