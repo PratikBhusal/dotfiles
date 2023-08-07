@@ -8,8 +8,21 @@ xinput --set-prop "pointer:Logitech K400 Plus" "libinput Natural Scrolling Enabl
 # Start programs at startup
 # xfce4-power-manager &
 
+# Redshift blue light filter tray icon
 command -v redshift-gtk 1> /dev/null 2>&1 && redshift-gtk &
+
+# Network manager tray icon
 command -v nm-applet    1> /dev/null 2>&1 && nm-applet    &
+
+# Hide mouse when typing
+command -v xbanish      1> /dev/null 2>&1 && xbanish      &
+
+# Pipewire Equalizer
+command -v easyeffects  1> /dev/null 2>&1 && easyeffects  --gapplication-service &
+
+# Logitech devices
+command -v solaar       1> /dev/null 2>&1 && solaar --window=hide &
+
 command -v numlockx     1> /dev/null 2>&1 && numlockx
 
 # Change key mappings at the software level
