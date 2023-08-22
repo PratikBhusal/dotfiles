@@ -13,29 +13,32 @@
 # (exit code 33) is set if there is less that 5% remaining.
 
 use strict;
-use warnings;
+use warnings FATAL => 'all';
 use utf8;
 
-my $acpi;
-my $status;
-my $percent;
-my $full_text;
-my $short_text;
+my $file;
 my $bat_number = $ENV{BLOCK_INSTANCE} || 0;
 
-# read the first line of the "acpi" command output
-open (ACPI, "acpi -b | grep 'Battery $bat_number' |") or die;
-$acpi = <ACPI>;
-close(ACPI);
+open ($file, "<", "/sys/class/power_supply/BAT$bat_number/capacity");
+my $percent = <$file>;
+close $file;
+$percent=~ s/\s+$//;
 
-# fail on unexpected output
-if ($acpi !~ /: (\w+), (\d+)%/) {
-    die "$acpi\n";
-}
+open ($file, "<", "/sys/class/power_supply/BAT$bat_number/status");
+my $status = <$file>;
+close $file;
+$status=~ s/\s+$//;
 
-$status = $1;
-$percent = $2;
-$full_text = "";
+open ($file, "<", "/sys/class/power_supply/BAT$bat_number/charge_now");
+my $charge_now = <$file>;
+close $file;
+
+open ($file, "<", "/sys/class/power_supply/BAT$bat_number/current_now");
+my $current_now = <$file> // 0;
+close $file;
+
+my $full_text = "";
+my $charge_numerator = 0;
 
 if ($status eq 'Discharging') {
     if ($percent < 10) {
@@ -48,19 +51,27 @@ if ($status eq 'Discharging') {
         $full_text .= ' ';
     } elsif ($percent <=100) {
         $full_text .= ' ';
-  }
+    }
+    $charge_numerator = $charge_now;
 } elsif ($status eq 'Charging') {
     $full_text .= ' ';
+
+    open ($file, "<", "/sys/class/power_supply/BAT$bat_number/charge_full");
+    $charge_numerator = <$file> - $charge_now;
+    close $file;
 }
 $full_text .= " $percent%";
 
-$short_text = $full_text;
+my $short_text = $full_text;
 
-if ($acpi =~ /(\d\d:\d\d):/) {
-    $full_text .= " ($1)";
+if ($current_now != 0) {
+    my $hours_remaining = $charge_numerator / $current_now;
+    my $minutes_remaining = $hours_remaining * 60 % 60;
+    $full_text .= sprintf " (%02d:%02d)",  $hours_remaining, $minutes_remaining;
 }
 
 # print text
+binmode(STDOUT, ":encoding(UTF-8)");
 print "$full_text\n";
 print "$short_text\n";
 
