@@ -106,8 +106,13 @@ fi
 # export QT_SELECT=qt5
 
 # command -v mpv >/dev/null 2>&1 && alias streamaudio="mpv --no-video --no-cache --volume=50"
-command -v mpv >/dev/null 2>&1 && alias streamaudio="mpv --no-video --volume=50"
-command -v mpv >/dev/null 2>&1 && alias streamlofi="mpv --no-video --volume=50 'https://www.youtube.com/watch?v=jfKfPfyJRdk'"
+if command -v mpv >/dev/null; then
+    alias streamaudio="mpv --no-video --no-sub-auto --no-sub --cache-pause=yes --cache-pause-wait=10"
+    if command -v yt-dlp >/dev/null; then
+        alias streamlofi="streamaudio 'https://www.youtube.com/watch?v=jfKfPfyJRdk'"
+        # alias streamlofi="mpv --no-video --no-sub-auto --no-sub --cache-pause=yes --cache-pause-wait=10 'https://www.youtube.com/watch?v=jfKfPfyJRdk'"
+    fi
+fi
 
 command -v joplin >/dev/null 2>&1 && alias joplin="joplin --profile ~/.config/joplin-desktop"
 
