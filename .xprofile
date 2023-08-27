@@ -38,8 +38,7 @@ if command -v setxkbmap 1> /dev/null 2>&1; then
 fi
 
 command -v xset     1> /dev/null 2>&1 && xset -b &
-picom -b --unredir-if-possible --backend xr_glx_hybrid --vsync --use-damage --glx-no-stencil --no-fading-openclose
-# picom -b --unredir-if-possible --vsync --backend glx --glx-no-stencil --no-fading-openclose
+picom -b
 xrdb .Xresources &
 hsetroot -solid "#000000" &
 sxhkd &
