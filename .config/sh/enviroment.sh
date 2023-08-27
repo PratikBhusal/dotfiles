@@ -16,6 +16,8 @@ export DOTFILES_MACHINE
 export VIMINIT="if has('nvim') | so ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/init.vim | else | set nocp | so ${XDG_CONFIG_HOME:-$HOME/.config}/vim/vimrc | endif"
 # export VIMINIT="set nocp | source ${XDG_CONFIG_HOME:-$HOME/.config}/vim/vimrc"
 
+# Always include "-R" flag
+export LESS="-R"
 
 # For ls, remove quotes around names
 export QUOTING_STYLE=literal
