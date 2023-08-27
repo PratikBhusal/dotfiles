@@ -3,4 +3,4 @@ Type=Application
 Name=Screenshot-Selection
 Comment=Launches program to take screenshot
 Terminal=false
-Exec=maim -u -f "png" -m 1 ~/Pictures/Screenshots/$(date +%\F-%T).png -s -r boxzoom
+Exec=maim -u -f "png" -m 1 ~/Pictures/Screenshots/$(date +%\F-%H_%M_%S).png -s -r boxzoom
