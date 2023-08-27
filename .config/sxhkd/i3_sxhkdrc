@@ -23,6 +23,9 @@ mod1 + {_, shift +} Tab
 mod1 + shift + {1-9,0}
     i3-msg -q move container to workspace \" {1-9,10} \"
 
+mod1 + Delete
+    ~/.config/dmenu/scripts/system_state/i3.sh
+
 # i3 - move & load via scratchpad
 # mod1 + {_, shift +} + minus
 #     i3-msg -q {scratchpad show, [floating] move scratchpad} 2> /dev/null

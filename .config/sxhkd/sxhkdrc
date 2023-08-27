@@ -12,9 +12,6 @@ mod1 + Return
 mod1 + shift + Return
     export OPEN_IN_TMUX=0; ~/.config/xorg/scripts/sensible-terminal.sh
 
-mod1 + Delete
-    ~/.config/dmenu/scripts/system_state.sh
-
 # mod1 + shift + q
 #     kill $(xdotool getwindowfocus getwindowpid)
 
