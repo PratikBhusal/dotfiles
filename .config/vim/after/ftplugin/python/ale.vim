@@ -6,7 +6,7 @@ if executable('flake8')
 endif
 if executable('mypy')
     call add(b:ale_linters, 'mypy')
-    let g:ale_python_mypy_options = '--no-pretty'
+    let g:ale_python_mypy_options = '--no-pretty --show-error-codes'
 endif
 if executable('bandit')
     call add(b:ale_linters, 'bandit')
