@@ -1,9 +1,11 @@
 #!/usr/bin/env sh
 
 # Enable Natural Scrolling
-xinput --set-prop "DELL0825:00 06CB:7E92 Touchpad" "libinput Natural Scrolling Enabled" 1 1> /dev/null 2>&1
-xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1 1> /dev/null 2>&1
-xinput --set-prop "pointer:Logitech K400 Plus" "libinput Natural Scrolling Enabled" 1 > /dev/null 2>&1
+if command -v xinput 1> /dev/null 2>&1; then
+    xinput --set-prop "DELL0825:00 06CB:7E92 Touchpad" "libinput Natural Scrolling Enabled" 1 1> /dev/null 2>&1
+    xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1 1> /dev/null 2>&1
+    xinput --set-prop "pointer:Logitech K400 Plus" "libinput Natural Scrolling Enabled" 1 > /dev/null 2>&1
+fi
 
 # Start programs at startup
 # xfce4-power-manager &
@@ -25,6 +27,9 @@ command -v solaar       1> /dev/null 2>&1 && solaar --window=hide &
 
 command -v numlockx     1> /dev/null 2>&1 && numlockx
 
+# Sudo prompt for GUI applications
+command -v /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 1> /dev/null 2>&1 && /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
 # Change key mappings at the software level
 if command -v setxkbmap 1> /dev/null 2>&1; then
     # Make it so that the only way to enable caps is by pressing both shift
@@ -32,15 +37,15 @@ if command -v setxkbmap 1> /dev/null 2>&1; then
     setxkbmap -option shift:both_capslock_cancel
 fi
 
-xset -b &
+command -v xset     1> /dev/null 2>&1 && xset -b &
 picom -b --unredir-if-possible --backend xr_glx_hybrid --vsync --use-damage --glx-no-stencil --no-fading-openclose
 # picom -b --unredir-if-possible --vsync --backend glx --glx-no-stencil --no-fading-openclose
 xrdb .Xresources &
 hsetroot -solid "#000000" &
 sxhkd &
 dunst &
-/usr/bin/prime-offload &
-optimus-manager-qt &
+# /usr/bin/prime-offload &
+# optimus-manager-qt &
 
 
 if command -v xrandr 1> /dev/null 2>&1  && command -v xidlehook 1> /dev/null 2>&1; then
@@ -66,4 +71,20 @@ if command -v xrandr 1> /dev/null 2>&1  && command -v xidlehook 1> /dev/null 2>&
         '' &
 fi
 
-# alsactl restore &
+# if xrandr | grep -e "^DP1 connected" 1> /dev/null; then
+#    xrandr --output eDP1 --off --output DP1 --primary --mode 2560x1440 --rate 165
+#    # xrandr --output eDP1 --off --output DP1 --primary --mode 2560x1440 --rate 165 --pos 0x0 --rotate normal
+# elif xrandr | grep -e "^HDMI-0 connected" 1> /dev/null; then
+#    xrandr --output eDP1 --off --output HDMI-0 --primary --mode 2560x1440 --rate 144
+# fi
+
+# # TODO: Figure out how to make this run automatically and securely provide
+# # password
+# rclone mount GoogleDrive:Keepass ~/Documents/.KeePass \
+# --daemon \
+# --dir-cache-time 60s \
+# --poll-interval 5s \
+# --log-level INFO \
+# --umask 002 \
+# --vfs-cache-mode writes \
+# --syslog
