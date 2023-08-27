@@ -56,8 +56,12 @@ fi
 shopt -s cdspell
 # Enable following directory shell options }}}
 
-# Set default editor to vim
-export VISUAL=vim
+# Set default editor to nvim with vim as fallback.
+if command -v nvim 1> /dev/null 2>&1; then
+    export VISUAL=nvim
+else
+    export VISUAL=vim
+fi
 export EDITOR="$VISUAL"
 
 # shellcheck source=.fzf.bash

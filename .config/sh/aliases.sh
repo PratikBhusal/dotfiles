@@ -95,12 +95,12 @@ fi
 alias diff='diff -U 0'
 
 
-
-# if command -v vim >/dev/null; then
-#     alias vi="vim"
-# elif command -v nvim >/dev/null; then
-#     alias vi="nvim"
-# fi
+if command -v nvim >/dev/null; then
+    alias vi="nvim"
+    alias vim="nvim"
+elif command -v vim >/dev/null; then
+    alias vi="vim"
+fi
 
 # export QT_STYLE_OVERRIDE=gtk
 # export QT_SELECT=qt5

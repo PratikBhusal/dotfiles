@@ -12,9 +12,9 @@
 	email       = PratikBhusal@users.noreply.github.com
 [core]
 	autocrlf    = input
-	editor = vim
+	editor = nvim
 [diff]
-	tool = vimdiff
+	tool = nvimdiff
 [commit]
 	verbose     = true
 # [merge]
@@ -26,3 +26,5 @@
     cane= commit --amend --no-edit
 [init]
 	defaultBranch = main
+[difftool "nvimdiff"]
+	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""

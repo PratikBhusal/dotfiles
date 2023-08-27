@@ -12,7 +12,7 @@
 # You should have received a copy of the GNU General Public License along with
 # this program.  If not, see <https://www.gnu.org/licenses/>.
 
-for term in "$TERMINAL" st x-terminal-emulator xfce4-terminal uxterm xterm; do
+for term in "$TERMINAL" st alacritty x-terminal-emulator xfce4-terminal uxterm xterm; do
     if command -v "$term" > /dev/null 2>&1; then
         CMD="$term $*"
         break
