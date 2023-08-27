@@ -6,6 +6,8 @@ let g:windows = has('win32') || has('win64')
 let g:cygwin  = has('unix') && has('win32unix')
 let g:linux   = has('unix') && !has('macunix') && !has('win32unix')
 let g:macOS   = has('macunix')
+
+let g:hardtime_timeout = 500
 " Essentials }}} ---------------------------------------------------------------
 
 " Follow XDG Directory Specification {{{ ---------------------------------------
