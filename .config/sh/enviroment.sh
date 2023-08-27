@@ -47,6 +47,10 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 [ -r "$HOME"/.config/sh/functions.d/path_manipulation.sh ] && \
     . "$HOME"/.config/sh/functions.d/path_manipulation.sh
 
+# shellcheck source=functions.d/pacman.sh
+[ -r "$HOME"/.config/sh/functions.d/pacman.sh ] && \
+    . "$HOME"/.config/sh/functions.d/pacman.sh
+
 # set PATH so it includes user's private bin if it exists
 prepend_to_path "/usr/local/bin"
 prepend_to_path "/usr/local/sbin"

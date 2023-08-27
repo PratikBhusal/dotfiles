@@ -1,0 +1,15 @@
+appimagelauncher # Staging inclusion.
+arc-kde
+birdtray # Staging inclusion.
+cryptomator-bin
+dashbinsh
+devour
+kvantum-theme-arc
+lf-bin # Staging inclusion.
+selectdefaultapplication-fork-git # Staging inclusion.
+spotify-adblock
+xbanish
+xcursor-oxygen
+xidlehook
+xournalpp-git
+yay
