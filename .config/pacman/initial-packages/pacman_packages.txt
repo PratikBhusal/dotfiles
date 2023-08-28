@@ -85,3 +85,4 @@ xsel
 zathura-pdf-mupdf
 zsh
 zsh-completions
+yad # Used for calendar
