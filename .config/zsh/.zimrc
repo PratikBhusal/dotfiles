@@ -1,0 +1,42 @@
+#!/usr/bin/env zsh
+
+# Prompt {{{
+zmodule romkatv/powerlevel10k --use degit
+# Prompt }}}
+
+# Oh My Zsh Plugins {{{
+
+# If a command was not found, mention some similarly names commands that could
+# be downloaded
+zmodule ohmyzsh/ohmyzsh --root plugins/command-not-found
+
+# Interactive cd
+zmodule ohmyzsh/ohmyzsh --root plugins/zsh-interactive-cd
+
+# zmodule ohmyzsh/ohmyzsh --root plugins/vim-interaction
+
+# Oh My Zsh Plugins }}}
+
+# Completions {{{
+
+zmodule zsh-users/zsh-completions --fpath src
+
+# Enables and configures smart and extensive tab completion.
+# completion must be sourced after all modules that add completion definitions.
+zmodule completion
+
+# Completions }}}
+
+# Modules that need to be initialized last {{{
+    # Provide command autosuggestions. This should be defered before syntax
+    # hightlighting.
+    #
+    # See: https://github.com/zsh-users/zsh-autosuggestions
+    zmodule zsh-users/zsh-autosuggestions
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=7'
+
+    # Syntax Hightlighting. Must be sourced after compinit
+    #
+    # See: https://github.com/zsh-users/zsh-autosuggestions
+    zmodule zdharma-continuum/fast-syntax-highlighting
+# Modules that need to be initialized last }}}

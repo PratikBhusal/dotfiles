@@ -1,5 +1,12 @@
 #!/usr/bin/env zsh
 
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Enable colors and changeprompt
 autoload -U colors && colors
 
@@ -31,14 +38,14 @@ SAVEHIST=1000
 HISTFILE=~/.cache/zsh/history
 
 # Enable command auto-completion
-autoload -Uz compinit
+# autoload -Uz compinit
 # zmodload zsh/complist
 
-if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
-    compinit;
-else
-    compinit -C;
-fi;
+# if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+#     compinit;
+# else
+#     compinit -C;
+# fi;
 zmodload zsh/complist
 
 # Arrow-key driven interface
@@ -112,29 +119,32 @@ bindkey -M vicmd ' ' edit-command-line
 # Load fzf default settings
 command -v fzf 1> /dev/null 2>&1 && [ -f ~/.fzf.zsh ] && . ~/.fzf.zsh
 
-# zinit installer {{{
-    if [[ ! -f $HOME/.config/zsh/.zinit/bin/zinit.zsh ]]; then
-        print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
-        command mkdir -p "$HOME/.config/zsh/.zinit" && command chmod g-rwX "$HOME/.config/zsh/.zinit"
-        command git clone https://github.com/zdharma/zinit "$HOME/.config/zsh/.zinit/bin" && \
-            print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-            print -P "%F{160}▓▒░ The clone has failed.%f%b"
-    fi
+# TODO: Look into a different plugin manager
+#
+# See:
+# - https://github.com/rossmacarthur/zsh-plugin-manager-benchmark/tree/master
+# - https://github.com/romkatv/zsh-bench/tree/master
+# - https://github.com/mattmc3/zsh_unplugged
 
-    source "$HOME/.config/zsh/.zinit/bin/zinit.zsh"
-    autoload -Uz _zinit
-    (( ${+_comps} )) && _comps[zinit]=_zinit
+# Zim plugin manager {{{
+zstyle ':zim:zmodule' use 'degit'
 
-    # Load a few important annexes, without Turbo
-    # (this is currently required for annexes)
-    zinit light-mode for \
-        zinit-zsh/z-a-patch-dl \
-        zinit-zsh/z-a-as-monitor \
-        zinit-zsh/z-a-bin-gem-node
-# zinit installer }}}
+ZIM_HOME="${XDG_CACHE_HOME}"/zim
 
-# shellcheck source=.config/zsh/plugins.zsh
-[ -s ~/.config/zsh/plugins.zsh ] && . ~/.config/zsh/plugins.zsh
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+      https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+fi
+
+# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init
+  # source ${ZIM_HOME}/zimfw.zsh init -q
+fi
+
+# Initialize modules.
+source ${ZIM_HOME}/init.zsh
+# Zim plugin manager }}}
 
 # shellcheck source=.config/nnn/config
 [ -s ~/.config/nnn/config ] && . ~/.config/nnn/config
@@ -145,3 +155,6 @@ if command -v pipx 1> /dev/null 2>&1; then
     bashcompinit
     eval "$(register-python-argcomplete pipx)"
 fi
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/plugin-configuration/powerlevel10k.zsh ]] || source ~/.config/zsh/plugin-configuration/powerlevel10k.zsh
