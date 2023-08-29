@@ -1,0 +1,75 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* only needed once */
+
+/* Hide all tabs (but not tab bar) when windowed. Preserves area for window controls (tested on macOS). */
+/*#TabsToolbar {
+  visibility: collapse !important;
+}*/
+
+/* Hide the whole tab bar in fullscreen */
+#TabsToolbar[inFullscreen] {
+  visibility: collapse !important;
+}
+
+#nav-bar{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Make private Browsing icon visible */
+#main-window[sizemode="maximized"][privatebrowsingmode=temporary] #private-browsing-indicator-titlebar > .private-browsing-indicator {
+  z-index: 1;
+}
+
+/* Hide sidebar header */
+#sidebar-header { visibility: collapse !important; }
+
+/* Decrease sidebar header text size */
+#sidebar-switcher-target { font-size: 75%; }
+
+#sidebar {
+  scrollbar-width: thin;
+}
+
+/* https://www.reddit.com/r/FirefoxCSS/comments/73iqgm/how_to_show_only_the_domain_in_the_address_bar/ */
+/* https://gist.github.com/hensm/f1e28acd25e072acb63867ba6bc7b365 */
+/* Place bindings.xml in the same folder as userChrome.css */
+/* #urlbar {
+  -moz-binding: url("bindings.xml#urlbar") !important;
+} */
+
+/*#titlebar {margin-bottom: -20px !important;}*/
+#tabbrowser-tabs {visibility: collapse !important;}
+
+#titlebar-buttonbox {
+  position: relative !important;
+  overflow-x: hidden !important;
+  height: 10px !important;
+  -moz-transition: all .2s ease-out .2s !important;
+}
+
+#titlebar-buttonbox:hover {
+  margin-top: -15px !important;
+  margin-bottom: 5px !important;
+  height: 60px !important;
+}
+
+[privatebrowsingmode="temporary"] #titlebar {margin-bottom: 0px !important;}
+[privatebrowsingmode="temporary"] #titlebar-buttonbox {
+  height: 30px !important;
+  -moz-transition: none !important;
+}
+[privatebrowsingmode="temporary"] #titlebar-buttonbox:hover {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  height: 30px !important;
+}
+
+[privatebrowsingmode="temporary"] #TabsToolbar {
+	visibility: collapse !important;
+}
+[privatebrowsingmode="temporary"] #titlebar-spacer {
+  background-image: url("chrome://browser/skin/private-browsing.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
