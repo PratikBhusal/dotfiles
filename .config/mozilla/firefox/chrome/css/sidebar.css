@@ -73,3 +73,8 @@
   background-position: right;
 }
 
+/* https://www.reddit.com/r/firefox/comments/126yi6d/any_way_to_showhide_the_tabs_bar/jebze53/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button */
+#titlebar{ -moz-appearance: none !important }
+/* :root[tabsintitlebar][sizemode="maximized"]{ padding-top: 6px !important; } */
+#titlebar:hover > #toolbar-menubar[autohide="true"]{ height: calc(var(--tab-min-height) + var(--space-above-tabbar) - var(--tabs-navbar-shadow-size)) !important; }
+#titlebar:not(:hover) > #toolbar-menubar[autohide="true"][inactive] + #TabsToolbar{ visibility: collapse }
