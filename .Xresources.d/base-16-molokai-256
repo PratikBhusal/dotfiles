@@ -2,7 +2,7 @@
 
 ! base-16-molokai-256
 #ifndef base00
-    #define base00 #1B1D1E
+    #define base00 #191919
 #endif
 #ifndef base01
     #define base01 #383830

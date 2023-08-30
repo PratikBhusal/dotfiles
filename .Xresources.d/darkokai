@@ -1,7 +1,7 @@
 ! vim: ft=xdefaults:
 
 #ifndef colorscheme_black
-    #define colorscheme_black      #1b1d1e
+    #define colorscheme_black      #191919
 #endif
 #ifndef colorscheme_red
     #define colorscheme_red        #f92672
