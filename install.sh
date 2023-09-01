@@ -86,3 +86,13 @@ fi
 
 # dotfiles config --local status.showUntrackedFiles no
 dotfiles config --local core.worktree "$HOME"
+
+# Use default pager if delta diff tool does not exist
+if ! command -v delta 1> /dev/null 2>&1; then
+    git config --global --unset core.pager
+fi
+
+# Use default diff tool if nvim does not exist
+if ! command -v nvim 1> /dev/null 2>&1; then
+    git config --global --unset diff.tool
+fi

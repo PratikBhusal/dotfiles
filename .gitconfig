@@ -13,6 +13,9 @@
 [core]
 	autocrlf    = input
 	editor = nvim
+	pager = delta
+[include]
+	path = ~/.config/delta/themes.gitconfig
 [diff]
 	tool = nvimdiff
 [commit]
@@ -28,3 +31,7 @@
 	defaultBranch = main
 [difftool "nvimdiff"]
 	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	features = darkokai
