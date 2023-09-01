@@ -10,7 +10,7 @@ function! s:eclipse_formatter(buffer) abort
     \ . ' -application org.eclipse.jdt.core.JavaCodeFormatter'
     \ . ' -quiet'
     \ . ' -config '
-    \ . expand('$HOME') . '/.vim/eclipse/org.eclipse.jdt.core.prefs '
+    \ . expand('$HOME') . '/.config/vim/eclipse/org.eclipse.jdt.core.prefs '
 
     silent! execute
     \   '!eclipse'
