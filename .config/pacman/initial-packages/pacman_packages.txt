@@ -6,7 +6,6 @@ base-devel
 bash-completion
 bash-completion
 bleachbit
-blueman
 chromium # Tenative inclusion.
 cronie # Tenative inclusion.
 cryptomator

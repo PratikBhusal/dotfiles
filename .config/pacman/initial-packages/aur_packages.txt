@@ -1,6 +1,7 @@
 appimagelauncher # Staging inclusion.
 arc-kde
 birdtray # Staging inclusion.
+bluetuith # Bluetooth TUI
 cryptomator-bin
 dashbinsh
 devour
