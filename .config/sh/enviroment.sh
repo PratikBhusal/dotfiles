@@ -60,10 +60,10 @@ append_to_path "$HOME/.config/dotfiles/scripts"
 
 
 # Add texlive
-if [ -d "$HOME/.texlive/2019/" ]; then
-    append_to_path "$HOME/.texlive/2019/bin/x86_64-linux/"
-    MANPATH=$MANPATH:$HOME/.texlive/2019/texmf-dist/doc/man/
-    INFOPATH=$INFOPATH:$HOME/.texlive/2019/texmf-dist/doc/info/
+if [ -d "$HOME/.texlive/2023/" ]; then
+    append_to_path "$HOME/.texlive/2023/sys/bin/x86_64-linux/"
+    MANPATH=$MANPATH:$HOME/.texlive/2023/sys/texmf-dist/doc/man/
+    INFOPATH=$INFOPATH:$HOME/.texlive/2023/sys/texmf-dist/doc/info/
     # export TEXMFCNF="$HOME/.texlive/2019/:"
 fi
 

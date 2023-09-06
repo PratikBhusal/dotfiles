@@ -76,12 +76,13 @@ xarchiver
 xclip
 xdg-utils
 xdotool
+xdotool
 xorg-server-xephyr
 xorg-xinit
 xorg-xinput
 xorg-xprop
 xsel
+yad # Used for calendar
 zathura-pdf-mupdf
 zsh
 zsh-completions
-yad # Used for calendar
