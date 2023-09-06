@@ -44,9 +44,20 @@ $if mode=vi
 
 $endif
 
-# Enable history expansion with space
-# E.g. typing !!<space> will replace the !! with your last command
-Space: magic-space
+# Enable history expansion with space.
+#
+# E.g.
+# typing !!<space> will replace the !! with your last command
+#
+# Because `magic-space` is a bash only command, we need if condition so that we
+# don't break with python, lua, etc. CLI interpreters.
+#
+# See:
+# https://unix.stackexchange.com/questions/636139/how-to-have-space-magic-space-in-inputrc-without-breaking-python-3-repl
+# https://unix.stackexchange.com/questions/315137/i-cannot-type-space-in-interactive-command-mode
+$if Bash
+  SPACE: magic-space
+$endif
 
 
 # Disable ^C message whenever Ctrl-C is pressed
