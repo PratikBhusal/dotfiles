@@ -7,6 +7,7 @@ dashbinsh
 devour
 kvantum-theme-arc
 lf-bin # Staging inclusion.
+openasar-bin # For discord
 selectdefaultapplication-fork-git # Staging inclusion.
 spotify-adblock
 xbanish
