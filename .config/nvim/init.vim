@@ -1,4 +1,11 @@
 " Vim Backwards Compatibility {{{ ----------------------------------------------
+if exists("g:neovide")
+    let g:neovide_cursor_animation_length = 0
+    let g:neovide_cursor_trail_size = 0
+    let g:neovide_cursor_animate_in_insert_mode = v:false
+    let g:neovide_cursor_animate_command_line = v:false
+endif
+
 if empty($XDG_CACHE_HOME)  | let $XDG_CACHE_HOME  = $HOME.'/.cache'       | endif
 if empty($XDG_CONFIG_HOME) | let $XDG_CONFIG_HOME = $HOME.'/.config'      | endif
 if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME.'/.local/share' | endif
