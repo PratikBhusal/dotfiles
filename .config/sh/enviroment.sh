@@ -72,6 +72,10 @@ fi
 # shellcheck source=.config/cargo/bin
 append_to_path "$HOME/.cargo/bin"
 
+
+# Append go binaries
+append_to_path "$HOME/go/bin"
+
 PATH=$(cleanup_path "$PATH")
 MANPATH=$(cleanup_path "$MANPATH")
 INFOPATH=$(cleanup_path "$INFOPATH")
