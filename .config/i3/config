@@ -180,13 +180,14 @@ bar {
 # }}}
 
 # Alternative Option: Volume Applet
-exec --no-startup-id xfce4-volumed
-exec --no-startup-id pasystray
+# exec --no-startup-id xfce4-volumed
+# exec --no-startup-id pasystray
 # }}}
 
 for_window [class="Yad"] floating enable
 for_window [class="(?i)pithos"] floating enable, move position center
 for_window [class="(?i)keeweb"] floating enable, move position center
+for_window [class="(?i)keewebz"] floating enable, move position center
 
 exec --no-startup-id sxhkd -c ~/.config/sxhkd/i3_sxhkdrc
 
