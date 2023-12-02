@@ -8,6 +8,8 @@ devour
 kvantum-theme-arc
 lf-bin # Staging inclusion.
 openasar-bin # For discord
+pcloud-drive
+pokemon-colorscripts
 selectdefaultapplication-fork-git # Staging inclusion.
 spotify-adblock
 xbanish

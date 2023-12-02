@@ -1,12 +1,14 @@
+# solaar # Only necessary for logitech peripherals
 alacritty
 arc-gtk-theme
 audacity
 base
 base-devel
 bash-completion
-bash-completion
+bat
 bleachbit
 chromium # Tenative inclusion.
+cronie
 cronie # Tenative inclusion.
 cryptomator
 direnv
@@ -18,24 +20,33 @@ efibootmgr
 exfatprogs
 firefox
 flameshot
+gimp
 git
+git-delta
 gparted
 grub
 grub-customizer
+gvfs-mtp # Tenative inclusion.
 i3-wm
 i3blocks
 i3lock
 interception-dual-function-keys # Tenative inclusion.
+jq
 keepassxc
 less
+libreoffice-fresh
+light
 lightdm
 lightdm-gtk-greeter
 lightdm-gtk-greeter-settings
 linux-firmware
 linux-lts
 linux-lts-headers
+lxappearance-gtk3 # Tenative inclusion. Prefer gtk4 alternative
 man-db
 man-pages
+mediainfo-gui # Tenative inclusion.
+mtpfs # Tenative inclusion.
 ncdu
 neovim
 network-manager-applet
@@ -52,16 +63,20 @@ picom
 pipewire
 pipewire-pulse
 polkit-gnome
+powertop
 pyenv
 python-pip
 python-pipx
 qt5ct
 rclone
-redshift-gtk
+redshift
 reflector
+ripgrep
 rsync
+shellcheck
 sudo
 sxhkd
+thermald
 thunar
 thunar-archive-plugin
 tmux
@@ -76,8 +91,8 @@ xarchiver
 xclip
 xdg-utils
 xdotool
-xdotool
 xorg-server-xephyr
+xorg-xev
 xorg-xinit
 xorg-xinput
 xorg-xprop
