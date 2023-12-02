@@ -1,3 +1,9 @@
 {
-    "vim.useSystemClipboard": true
+    "security.workspace.trust.untrustedFiles": "open",
+    "git.openRepositoryInParentFolders": "always",
+    "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
+    "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
+    "vim.useSystemClipboard": true,
+    "C_Cpp.default.cppStandard": "c++23",
+    "editor.lineNumbers": "relative"
 }
