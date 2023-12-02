@@ -8,6 +8,7 @@
 
 mod4 + r
     i3-dmenu-desktop
+    # i3-dmenu-desktop --dmenu="dmenu -i -fn 'Monospace-18'"
 
 mod1 + shift + q
     i3-msg -q kill
