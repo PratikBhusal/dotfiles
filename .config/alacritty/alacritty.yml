@@ -851,9 +851,10 @@ colors:
   # Print all received window events.
   #print_events: false
 
-shell:
-  program: /bin/zsh
-  args:
-    - -l
-    - -c
-    - "tmux -2 attach || tmux -2"
+# If on a mac, uncomment the below lines
+# shell:
+#   program: /bin/zsh
+#   args:
+#     - -l
+#     - -c
+#     - "tmux -2 attach || tmux -2"
