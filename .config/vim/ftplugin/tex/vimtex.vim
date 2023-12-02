@@ -1,5 +1,8 @@
-let g:polyglot_disabled += ['latex']
+" let g:polyglot_disabled = get(g:, 'polyglot_disabled', [])
+" let g:polyglot_disabled += ['latex']
+
 " let g:vimtex_view_automatic = 0
+
 " Compile and Run {{{ ----------------------------------------------------------
     augroup vimtex_event_1
         au!
