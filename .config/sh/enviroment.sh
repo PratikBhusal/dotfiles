@@ -41,7 +41,8 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 
 # export QT_QPA_PLATFORMTHEME=gtk2
-export QT_QPA_PLATFORMTHEME=qt5ct
+# export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_STYLE_OVERRIDE=kvantum
 
 # shellcheck source=functions.d/path_manipulation.sh
 [ -r "$HOME"/.config/sh/functions.d/path_manipulation.sh ] && \
