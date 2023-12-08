@@ -3,3 +3,16 @@
 #include ".Xresources.d/sxiv"
 #include ".Xresources.d/dmenu"
 #include ".Xresources.d/xterm"
+
+! xrandr | grep -w connected
+! eDP connected primary 2256x1504+0+0 (normal left inverted right x axis y axis) 285mm x 190mm
+! 2256.0/(285.0/25.4) == 201 + 29/475 ~= 201
+! 1504.0/(190.0/25.4) == 201 + 29/475 ~= 201
+
+! Screen Diagonal: 13.5 inches
+! 13.5/sqrt(2256^2+1504^2)*2256*25.4 ~= 285
+! 13.5/sqrt(2256^2+1504^2)*1504*25.4 ~= 190
+!
+! xrdb -query | grep dpi
+! xdpyinfo | grep -B2 resolution
+! Xft.dpi: 201
