@@ -147,7 +147,7 @@ command -v fzf 1> /dev/null 2>&1 && [ -f ~/.fzf.zsh ] && . ~/.fzf.zsh
 # Zim plugin manager {{{
 zstyle ':zim:zmodule' use 'degit'
 
-ZIM_HOME="${XDG_CACHE_HOME}"/zim
+ZIM_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"/zim
 
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
   curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
