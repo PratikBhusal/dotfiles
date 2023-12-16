@@ -7,13 +7,13 @@
 *.color0:  colorscheme_black
 *.color1:  colorscheme_red
 *.color2:  colorscheme_green
-*.color3:  colorscheme_brown
+*.color3:  colorscheme_yellow
 *.color4:  colorscheme_blue
 *.color5:  colorscheme_purple
 *.color6:  colorscheme_cyan
 *.color7:  colorscheme_light_gray
 
-*.color8:  colorscheme_dark_gray
+*.color8:  colorscheme_gray
 *.color9:  colorscheme_red
 *.color10: colorscheme_green
 *.color11: colorscheme_yellow
