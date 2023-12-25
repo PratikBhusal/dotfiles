@@ -36,6 +36,9 @@ command -v i3lock  1> /dev/null 2>&1 && export LOCKER="i3lock"
 command -v grip  1> /dev/null 2>&1 && export GRIPHOME="$HOME/.config/grip"
 
 
+# For `st` truecolor to work, we need to set `COLORTERM`
+[ "$TERMINAL" = "st" ] && [ -z "$COLORTERM" ] && export COLORTERM=truecolor
+
 # Opt-out of Microsoft telemetry
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
