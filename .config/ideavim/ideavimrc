@@ -1,0 +1,11 @@
+" Yank from system clipboard
+set clipboard+=unnamed
+
+" Shortcut to get into command mode. I don't really use the default normal mode
+" binding for ';'
+nnoremap ; :
+
+" Do incremental searching.
+set incsearch
+
+" source ~/.config/vim/vimrc
