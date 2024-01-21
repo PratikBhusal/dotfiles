@@ -35,3 +35,5 @@
 	diffFilter = delta --color-only
 [delta]
 	features = darkokai
+[credential]
+	helper = git-credential-manager

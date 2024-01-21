@@ -42,6 +42,12 @@ command -v grip  1> /dev/null 2>&1 && export GRIPHOME="$HOME/.config/grip"
 # Opt-out of Microsoft telemetry
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
+# Configure git-credential-manager for linux
+if command -v git-credential-manager 1> /dev/null 2>&1 \
+    && [ "$DOTFILES_MACHINE" = 'Linux' ]; then
+    export GCM_CREDENTIAL_STORE=cache
+    export GCM_CREDENTIAL_CACHE_OPTIONS="--timeout 300"
+fi
 
 # export QT_QPA_PLATFORMTHEME=gtk2
 # export QT_QPA_PLATFORMTHEME=qt5ct

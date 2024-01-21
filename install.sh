@@ -96,3 +96,9 @@ fi
 if ! command -v nvim 1> /dev/null 2>&1; then
     git config --global --unset diff.tool
 fi
+
+# Remove git-credential-manager config if it does not exist
+if ! git-credential-manager 1> /dev/null 2>&1; then
+    # git config --global --unset "credential.https://dev.azure.com.usehttppath"
+    git config --global --unset credential.helper
+fi
