@@ -8,4 +8,7 @@ nnoremap ; :
 " Do incremental searching.
 set incsearch
 
+set number
+set relativenumber
+
 " source ~/.config/vim/vimrc
