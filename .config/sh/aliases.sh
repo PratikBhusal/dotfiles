@@ -116,6 +116,8 @@ fi
 
 command -v joplin >/dev/null 2>&1 && alias joplin="joplin --profile ~/.config/joplin-desktop"
 
+command -v qalc >/dev/null 2>&1 && alias calc='qalc'
+
 # Similar to `pipx`, have an easy location to store global npm binaries for
 # later use.
 command -v npm >/dev/null 2>&1 && alias npm-binaries="npm --prefix \$HOME/.local/npm-binaries/ -g"
