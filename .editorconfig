@@ -8,6 +8,8 @@ end_of_line = lf
 indent_size = 4
 indent_style = space
 trim_trailing_whitespace = true
+# Show 80 and 120 column thresholds within IntelliJ editor
+ij_visual_guides = 80,120
 
 [*.diff]
 trim_trailing_whitespace = false
