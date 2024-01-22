@@ -46,12 +46,14 @@ HISTFILE=~/.cache/zsh/history
 # Enable command auto-completion
 autoload -Uz compinit
 
+
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
     compinit;
 else
     compinit -C;
 fi;
 zmodload zsh/complist
+
 
 # Use gnu_generic completion for particular programs
 command -v delta 1> /dev/null 2>&1 && compdef _gnu_generic delta
@@ -62,6 +64,9 @@ zstyle ':completion:*' menu select
 # Have same colors as the ls command for files
 # eval "$(dircolors)" # Do not need to call if done in aliases.zsh file
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# Add custom _git completion to make it work with `dotfiles` alias
+fpath=("$ZDOTDIR/completions/git" $fpath)
 
 # disable auto-completion for aliases
 # setopt COMPLETE_ALIASES
