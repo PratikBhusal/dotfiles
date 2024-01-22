@@ -101,4 +101,7 @@ fi
 if ! git-credential-manager 1> /dev/null 2>&1; then
     # git config --global --unset "credential.https://dev.azure.com.usehttppath"
     git config --global --unset credential.helper
+else
+    dotfiles config credential.credentialStore cache
+    dotfiles config credential.cacheOptions "--timeout 300"
 fi
