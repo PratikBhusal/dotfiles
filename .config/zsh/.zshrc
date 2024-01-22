@@ -44,15 +44,17 @@ SAVEHIST=1000
 HISTFILE=~/.cache/zsh/history
 
 # Enable command auto-completion
-# autoload -Uz compinit
-# zmodload zsh/complist
+autoload -Uz compinit
 
-# if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
-#     compinit;
-# else
-#     compinit -C;
-# fi;
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+    compinit;
+else
+    compinit -C;
+fi;
 zmodload zsh/complist
+
+# Use gnu_generic completion for particular programs
+command -v delta 1> /dev/null 2>&1 && compdef _gnu_generic delta
 
 # Arrow-key driven interface
 zstyle ':completion:*' menu select
