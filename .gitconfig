@@ -27,6 +27,7 @@
     st = status
     loglocalgraph = log --exclude=refs/remotes/* --all --oneline --graph
     cane= commit --amend --no-edit
+    uso = ! git diff --cached --name-only --diff-filter=d | xargs git add -u
 [init]
 	defaultBranch = main
 [difftool "nvimdiff"]
