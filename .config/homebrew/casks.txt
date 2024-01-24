@@ -1,0 +1,12 @@
+alacritty: (Alacritty) GPU-accelerated terminal emulator
+blackhole-2ch: (BlackHole 2ch) Virtual Audio Driver
+bruno: (Bruno) Opensource IDE for exploring and testing api's
+docker: Pack, ship and run any application as a lightweight container
+firefox: (Mozilla Firefox) Web browser
+flux: Lightweight scripting language for querying databases
+git-credential-manager: (Git Credential Manager) Cross-platform Git credential storage for multiple hosting providers
+hammerspoon: (Hammerspoon) Desktop automation application
+karabiner-elements: (Karabiner Elements) Keyboard customizer
+keepassxc: (KeePassXC) Password manager app
+vlc: (VLC media player) Multimedia player
+vscodium: (VSCodium) Binary releases of VS Code without MS branding/telemetry/licensing

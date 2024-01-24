@@ -1,0 +1,17 @@
+bat: Clone of cat(1) with syntax highlighting and Git integration
+docker: Pack, ship and run any application as a lightweight container
+fzf: Command-line fuzzy finder written in Go
+git-delta: Syntax-highlighting pager for git and diff output
+jq: Lightweight and flexible command-line JSON processor
+skhd: Simple hotkey-daemon for macOS.
+yabai: A tiling window manager for macOS based on binary space partitioning.
+lsd: Clone of ls with colorful output, file type icons, and more
+mpv: Media player based on MPlayer and mplayer2
+neovim: Ambitious Vim-fork focused on extensibility and agility
+pipx: Execute binaries from Python packages in isolated environments
+pre-commit: Framework for managing multi-language pre-commit hooks
+pyenv: Python version management
+ripgrep: Search tool like grep and The Silver Searcher
+tmux: Terminal multiplexer
+trash: CLI tool that moves files or folder to the trash
+volta: JavaScript toolchain manager for reproducible environments
