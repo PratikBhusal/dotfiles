@@ -120,7 +120,12 @@ command -v qalc >/dev/null 2>&1 && alias calc='qalc'
 
 # Similar to `pipx`, have an easy location to store global npm binaries for
 # later use.
-command -v npm >/dev/null 2>&1 && alias npm-binaries="npm --prefix \$HOME/.local/npm-binaries/ -g"
+if command -v pnpm >/dev/null 2>&1; then
+    alias npm=pnpm
+    alias npm-binaries="pnpm --prefix \$HOME/.local/pnpm-binaries/ -g"
+elif command -v npm >/dev/null 2>&1; then
+    alias npm-binaries="npm --prefix \$HOME/.local/npm-binaries/ -g"
+fi
 
 mkdir_touch() {
     for file_path in "$@"; do
