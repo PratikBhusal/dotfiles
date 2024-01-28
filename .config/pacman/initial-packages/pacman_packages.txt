@@ -62,6 +62,7 @@ pavucontrol
 picom
 pipewire
 pipewire-pulse
+pkgfile
 polkit-gnome
 powertop
 pyenv
