@@ -77,7 +77,7 @@ user_pref("network.captive-portal-service.enabled", false);
 user_pref("network.cookie.cookieBehavior", 1);
 user_pref("network.dns.disablePrefetch", true);
 user_pref("network.dns.disablePrefetchFromHTTPS", true);
-user_pref("network.http.referer.spoofSource", true);
+user_pref("network.http.referer.spoofSource", false); // Setting it to true breaks google drive, specifically you cannot create any good docs files.
 user_pref("network.http.speculative-parallel-limit", 0);
 user_pref("network.predictor.enable-prefetch", false);
 user_pref("network.predictor.enabled", false);
