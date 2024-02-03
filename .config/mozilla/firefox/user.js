@@ -28,7 +28,7 @@ user_pref("browser.safebrowsing.downloads.remote.url", "");
 user_pref("browser.safebrowsing.enabled", false);
 user_pref("browser.safebrowsing.malware.enabled", false);
 user_pref("browser.safebrowsing.phishing.enabled", false);
-user_pref("browser.search.suggest.enabled", false);
+user_pref("browser.search.suggest.enabled", false); // When enabled, Firefox suggests search terms in the search field. This will send everything typed or pasted in the search field to the chosen search engine, even when you did not press enter.
 user_pref("browser.selfsupport.url", "");
 user_pref("browser.send_pings", false);
 user_pref("browser.sessionstore.privacy_level", 0);
@@ -36,7 +36,7 @@ user_pref("browser.startup.homepage_override.mstone", "ignore");
 user_pref("browser.tabs.crashReporting.sendReport", false);
 user_pref("browser.tabs.firefox-view", false);
 user_pref("browser.urlbar.groupLabels.enabled", false);
-user_pref("browser.urlbar.quicksuggest.enabled", false);
+user_pref("browser.urlbar.quicksuggest.enabled", false); // When enabled and you type "something" in the urlbar and press enter, Firefox tries "something.com", if Fixup URLs is enabled.
 user_pref("browser.urlbar.speculativeConnect.enabled", false);
 user_pref("browser.urlbar.trimURLs", false);
 user_pref("datareporting.healthreport.service.enabled", false);
@@ -74,7 +74,7 @@ user_pref("media.peerconnection.enabled", false);
 user_pref("media.video_stats.enabled", false);
 user_pref("network.allow-experiments", false);
 user_pref("network.captive-portal-service.enabled", false);
-user_pref("network.cookie.cookieBehavior", 1);
+user_pref("network.cookie.cookieBehavior", 1); // 1 corresponds to "Block All cross-site cookies". 5 by default which corresponds to "Cross-Site tracking cookies, and isolate other cross-site cookies"
 user_pref("network.dns.disablePrefetch", true);
 user_pref("network.dns.disablePrefetchFromHTTPS", true);
 user_pref("network.http.referer.spoofSource", false); // Setting it to true breaks google drive, specifically you cannot create any good docs files.
