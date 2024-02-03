@@ -69,6 +69,7 @@ user_pref("extensions.webservice.discoverURL", "");
 user_pref("media.autoplay.default", 1);
 user_pref("media.autoplay.enabled", false);
 user_pref("media.eme.enabled", false);
+user_pref("media.gmp-widevinecdm.enabled", false); // Tentative config setting
 user_pref("media.navigator.enabled", false);
 user_pref("media.peerconnection.enabled", false);
 user_pref("media.video_stats.enabled", false);
@@ -82,6 +83,7 @@ user_pref("network.http.speculative-parallel-limit", 0);
 user_pref("network.predictor.enable-prefetch", false);
 user_pref("network.predictor.enabled", false);
 user_pref("network.prefetch-next", false);
+user_pref("network.trr.mode", 5); // Tentative config setting
 user_pref("privacy.donottrackheader.enabled", true);
 user_pref("privacy.donottrackheader.value", 1);
 user_pref("privacy.query_stripping", true);
@@ -109,6 +111,7 @@ user_pref("toolkit.telemetry.shutdownPingSender.enabled", false);
 user_pref("toolkit.telemetry.unified", false);
 user_pref("toolkit.telemetry.unifiedIsOptIn", false);
 user_pref("toolkit.telemetry.updatePing.enabled", false);
+user_pref("webgl.disabled", true); // Tentative config setting
 user_pref("webgl.renderer-string-override", " ");
 user_pref("webgl.vendor-string-override", " ");
 <!-- prettier-ignore-end -->
