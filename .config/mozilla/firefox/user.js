@@ -1,3 +1,4 @@
+<!-- prettier-ignore-start -->
 // Mozilla User Preferences
 
 // Configured using: https://ffprofile.com
@@ -110,3 +111,4 @@ user_pref("toolkit.telemetry.unifiedIsOptIn", false);
 user_pref("toolkit.telemetry.updatePing.enabled", false);
 user_pref("webgl.renderer-string-override", " ");
 user_pref("webgl.vendor-string-override", " ");
+<!-- prettier-ignore-end -->
