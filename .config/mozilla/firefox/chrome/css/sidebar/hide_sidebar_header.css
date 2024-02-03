@@ -1,0 +1,2 @@
+/* Hide sidebar header */
+#sidebar-header { visibility: collapse !important; }

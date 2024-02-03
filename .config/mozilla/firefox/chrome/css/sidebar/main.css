@@ -6,3 +6,6 @@
  * version instead*/
 @import url("hide_tabs_toolbar.css");
 /* @import url("hide_tabs_toolbar_osx.css"); */
+
+/* Remove ugly sideberry header in favor of the keybindings. */
+@import url("hide_sidebar_header.css");
