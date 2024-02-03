@@ -1,2 +1,10 @@
-/* Use sidebar (ie Sidebery) for tab controls */
-@import url("css/sidebar.css");
+/* See: https://mrotherguy.github.io */
+
+
+/* Use sidebar (ie Sidebery) for tab controls.
+ *
+ * TODO: Test if this is functionally equivalent or better to the old
+ * `css/sidebar.css` file for windows.
+ */
+@import url("css/sidebar/main.css");
+/* @import url("css/sidebar.css"); */
