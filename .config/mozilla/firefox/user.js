@@ -1,8 +1,8 @@
-<!-- prettier-ignore-start -->
 // Mozilla User Preferences
 
 // Configured using: https://ffprofile.com
 
+<!-- prettier-ignore-start -->
 user_pref("app.normandy.api_url", "");
 user_pref("app.normandy.enabled", false);
 user_pref("app.shield.optoutstudies.enabled", false);
@@ -48,7 +48,7 @@ user_pref("device.sensors.motion.enabled", false);
 user_pref("device.sensors.orientation.enabled", false);
 user_pref("device.sensors.proximity.enabled", false);
 user_pref("dom.battery.enabled", false);
-user_pref("dom.event.clipboardevents.enabled", false);
+user_pref("dom.event.clipboardevents.enabled", true);
 user_pref("dom.security.https_only_mode", true);
 user_pref("dom.security.https_only_mode_ever_enabled", true);
 user_pref("dom.webaudio.enabled", false);
