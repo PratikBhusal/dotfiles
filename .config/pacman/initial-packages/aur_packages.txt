@@ -7,6 +7,8 @@ dashbinsh
 devour
 kvantum-theme-arc
 lf-bin # Staging inclusion.
+libinput-gestures
+libinput-gestures-qt
 openasar-bin # For discord
 pcloud-drive
 pokemon-colorscripts
