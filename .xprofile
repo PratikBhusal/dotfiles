@@ -28,7 +28,7 @@ command -v nm-applet    1> /dev/null 2>&1 && nm-applet    &
 command -v xbanish      1> /dev/null 2>&1 && xbanish      &
 
 # Pipewire Equalizer
-command -v easyeffects  1> /dev/null 2>&1 && easyeffects  --gapplication-service &
+command -v easyeffects  1> /dev/null 2>&1 && easyeffects  --hide-window &
 
 # Logitech devices
 command -v solaar       1> /dev/null 2>&1 && solaar --window=hide &
