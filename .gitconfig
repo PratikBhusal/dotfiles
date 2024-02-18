@@ -1,27 +1,27 @@
 # This is Git's per-user configuration file.
 [color]
-	diff        = auto
-	status      = auto
-	branch      = auto
-	interactive = auto
-	ui          = auto
-	pager       = true
+    diff        = auto
+    status      = auto
+    branch      = auto
+    interactive = auto
+    ui          = auto
+    pager       = true
 [user]
 # Please adapt and uncomment the following lines:
-	name        = PratikBhusal
-	email       = PratikBhusal@users.noreply.github.com
+    name        = PratikBhusal
+    email       = PratikBhusal@users.noreply.github.com
 [core]
-	autocrlf    = input
-	editor = nvim
-	pager = delta
+    autocrlf    = input
+    editor = nvim
+    pager = delta
 [include]
-	path = ~/.config/delta/themes.gitconfig
+    path = ~/.config/delta/themes.gitconfig
 [diff]
-	tool = nvimdiff
+    tool = nvimdiff
 [commit]
-	verbose     = true
+    verbose     = true
 # [merge]
-# 	ff = no
+#   ff = no
 # git log --exclude=refs/remotes/\* --all --oneline --graph
 [alias]
     st = status
@@ -29,12 +29,12 @@
     cane= commit --amend --no-edit
     uso = ! git diff --cached --name-only --diff-filter=d | xargs git add -u
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [difftool "nvimdiff"]
-	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [interactive]
-	diffFilter = delta --color-only
+    diffFilter = delta --color-only
 [delta]
-	features = darkokai
+    features = darkokai
 [credential]
-	helper = git-credential-manager
+    helper = git-credential-manager
