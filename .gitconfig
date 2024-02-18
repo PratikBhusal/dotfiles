@@ -1,4 +1,7 @@
 # This is Git's per-user configuration file.
+#
+# TODO: Go through the following:
+# - https://jvns.ca/blog/2024/02/16/popular-git-config-options/
 [color]
     diff        = auto
     status      = auto
@@ -38,3 +41,8 @@
     features = darkokai
 [credential]
     helper = git-credential-manager
+[merge]
+    # See:
+    # - https://stackoverflow.com/questions/71252026/how-do-i-use-zealous-diff3-with-git-and-what-are-the-pros-and-cons
+    # - https://ductile.systems/zdiff3/
+    conflictStyle = zdiff3
