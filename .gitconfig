@@ -53,3 +53,7 @@
     # - https://stackoverflow.com/questions/71252026/how-do-i-use-zealous-diff3-with-git-and-what-are-the-pros-and-cons
     # - https://ductile.systems/zdiff3/
     conflictStyle = zdiff3
+[push]
+    # See:
+    # - https://git-scm.com/docs/git-config/#Documentation/git-config.txt-pushautoSetupRemote
+    autoSetupRemote = true
