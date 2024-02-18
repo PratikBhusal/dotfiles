@@ -2,6 +2,13 @@
 #
 # TODO: Go through the following:
 # - https://jvns.ca/blog/2024/02/16/popular-git-config-options/
+#
+# TODO: Once difftastic has better github/delta-like background highlighting and
+# 24-bit color support, consider using it over git-delta. See:
+# - https://github.com/Wilfred/difftastic/issues/265
+# - https://github.com/Wilfred/difftastic/issues/275
+# - https://github.com/Wilfred/difftastic/pull/286
+# - https://github.com/Wilfred/difftastic/issues/613
 [color]
     diff        = auto
     status      = auto
