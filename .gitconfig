@@ -94,3 +94,10 @@
     # TODO: Look into git-branchless:
     # - https://github.com/arxanas/git-branchless
     updateRefs = true
+# # Note: prune configs commented out because it has not been fully vetted. Will
+# # tinker around locally before commiting to the inclusion by default in remote.
+# [fetch]
+#     # If a branch/tag no longer exists in the remote repository, remove the local
+#     # reference when calling `git fetch` by default
+#     prune = true
+#     prunetags = true
