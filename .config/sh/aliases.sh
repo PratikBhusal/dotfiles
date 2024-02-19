@@ -92,7 +92,7 @@ if command -v ipython >/dev/null; then
     alias python3=interactive_python
 fi
 
-alias diff='diff -U 0'
+alias diff='git diff --no-index'
 
 
 if command -v nvim >/dev/null; then
