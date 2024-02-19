@@ -49,7 +49,7 @@
 # git log --exclude=refs/remotes/\* --all --oneline --graph
 [alias]
     st = status
-    loglocalgraph = log --exclude=refs/remotes/* --all --oneline --graph
+    localloggraph = log --exclude=refs/remotes/* --all --oneline --graph
     cane= commit --amend --no-edit
     uso = ! git diff --cached --name-only --diff-filter=d | xargs git add -u
     # Make it a bit more explicit and safe that you want to force push changes
