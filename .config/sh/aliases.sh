@@ -118,6 +118,14 @@ command -v joplin >/dev/null 2>&1 && alias joplin="joplin --profile ~/.config/jo
 
 command -v qalc >/dev/null 2>&1 && alias calc='qalc'
 
+
+if command -v glow >/dev/null 2>&1; then
+    better_pager_for_glow() {
+        PAGER="less -rF" glow "$@"
+    }
+    alias glow=better_pager_for_glow
+fi
+
 # Similar to `pipx`, have an easy location to store global npm binaries for
 # later use.
 if command -v pnpm >/dev/null 2>&1; then

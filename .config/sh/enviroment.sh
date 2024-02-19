@@ -34,6 +34,9 @@ command -v pyenv   1> /dev/null 2>&1 && eval   "$(pyenv init -)"
 command -v firefox 1> /dev/null 2>&1 && export BROWSER="firefox"
 command -v i3lock  1> /dev/null 2>&1 && export LOCKER="i3lock"
 command -v grip  1> /dev/null 2>&1 && export GRIPHOME="$HOME/.config/grip"
+if command -v glow >/dev/null 2>&1; then
+    export GLAMOUR_STYLE="$HOME/.config/glamour/config.json"
+fi
 
 
 # For `st` truecolor to work, we need to set `COLORTERM`
@@ -85,6 +88,7 @@ append_to_path "$HOME/.cargo/bin"
 # Append pnpm/npm binaries
 append_to_path "$HOME/.local/pnpm-binaries/bin"
 append_to_path "$HOME/.local/npm-binaries/bin"
+append_to_path "$(go env GOPATH)/bin"
 
 # Append go binaries
 append_to_path "$HOME/go/bin"
