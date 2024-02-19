@@ -123,3 +123,28 @@
     #
     # use Ctrl-c to always cancel running the autocorrected command
     autocorrect = prompt
+[url "git@github.com:"]
+    # When running:
+    # ```
+    #   git clone gh:PratikBhusal/dotfiles.git
+    # ```
+    # treat it as if you actually ran:
+    # ```
+    #   git clone git@github.com:PratikBhusal/dotfiles.git
+    # ```
+    insteadOf = "gh:"
+    # insteadOf = "https://github.com/"
+[url "git@gitlab.com:"]
+    # When running:
+    # ```
+    #   git clone gl:PratikBhusal/dotfiles.git
+    # ```
+    # treat it as if you actually ran:
+    # ```
+    #   git clone git@gitlab.com:PratikBhusal/dotfiles.git
+    # ```
+    insteadOf = "gl:"
+    # insteadOf = "https://gitlab.com/"
+[url "git@github.com:PratikBhusal"]
+    # For your git repositories, always use ssh for pushing.
+    pushInsteadOf = "https://github.com/PratikBhusal"
