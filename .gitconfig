@@ -57,3 +57,7 @@
     # See:
     # - https://git-scm.com/docs/git-config/#Documentation/git-config.txt-pushautoSetupRemote
     autoSetupRemote = true
+[branch]
+    # Sort branches by last committed in ascending order ie branch with newest
+    # commit is at the bottom.
+    sort = committerdate
