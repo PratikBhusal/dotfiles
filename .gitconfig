@@ -106,6 +106,9 @@
     updateRefs = true
 # # Note: prune configs commented out because it has not been fully vetted. Will
 # # tinker around locally before commiting to the inclusion by default in remote.
+# #
+# # Similar -  See the following to delete local branches when the remote no longer exists:
+# # - https://stackoverflow.com/questions/13064613/how-to-prune-local-tracking-branches-that-do-not-exist-on-remote-anymore
 # [fetch]
 #     # If a branch/tag no longer exists in the remote repository, remove the local
 #     # reference when calling `git fetch` by default
