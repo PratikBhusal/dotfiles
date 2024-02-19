@@ -1,5 +1,13 @@
 # This is Git's per-user configuration file.
 #
+# TODO: Look into splitting up personal and work specific configurations. See:
+# - https://medium.com/@eduardosilva_94960/git-tips-simplify-multi-identity-management-with-includeif-8a4c9bcc9eb
+# - https://gist.github.com/Icaruk/f024a18093dc28ec1588cfb90efc32f7
+# - https://stackoverflow.com/questions/61543355/git-includeif-for-personal-and-work-profiles-doesnt-work
+#
+# TODO: Look into splitting up platform specific configurations. See:
+# - https://medium.com/doing-things-right/platform-specific-gitconfigs-and-the-wonderful-includeif-7376cd44994d
+#
 # TODO: Go through the following:
 # - https://jvns.ca/blog/2024/02/16/popular-git-config-options/
 #
