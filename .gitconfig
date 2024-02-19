@@ -111,3 +111,15 @@
 #     # reference when calling `git fetch` by default
 #     prune = true
 #     prunetags = true
+[help]
+    # If you mistyped a command, git tries to figure out what you mean.
+    #
+    # If set to an integer, git tries to run the auto-corrected command after a
+    # certain period of waiting. If the value is an integer ie 1, it will wait
+    # for 0.1 seconds. If it is 10, it will wait for 1 second.
+    #
+    # If set to `prompt`, git prompts if you want to run the autocorrect
+    # command. Pressing `y` and enter runs the autocorrected command.
+    #
+    # use Ctrl-c to always cancel running the autocorrected command
+    autocorrect = prompt
