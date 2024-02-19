@@ -42,6 +42,8 @@
     loglocalgraph = log --exclude=refs/remotes/* --all --oneline --graph
     cane= commit --amend --no-edit
     uso = ! git diff --cached --name-only --diff-filter=d | xargs git add -u
+    # Make it a bit more explicit and safe that you want to force push changes
+    push--force = push --force-with-lease --force-if-includes
 [init]
     defaultBranch = main
 [difftool "nvimdiff"]
@@ -61,6 +63,23 @@
     # See:
     # - https://git-scm.com/docs/git-config/#Documentation/git-config.txt-pushautoSetupRemote
     autoSetupRemote = true
+    # Make `git push --force` more safe. If local commits include the latest
+    # changes of the remote branch to which you are pushing (meaning the current
+    # commits of the remote branch are found within your local commits), then
+    # the git push operation will proceed. If the remote repository's commits
+    # are not present locally, this forced push operation is denied.
+    #
+    # In other words:
+    # - Ensures that local commits encompass the remote changes.
+    # - Prevents accidental overwriting of changes in the remote repository.
+    # - Avoids critical errors, especially when multiple people are working on
+    #   the same repository.
+    #
+    # See:
+    # - https://vladimirzdrazil.com/til/git/git-force-if-includes
+    # - https://medium.yemreak.com/safe-pushing-with-git-3714ffec9ac1
+    # - https://stackoverflow.com/questions/65837109/when-should-i-use-git-push-force-if-includes
+    useForceIfIncludes = true
 [branch]
     # Sort branches by last committed in ascending order ie branch with newest
     # commit is at the bottom.
