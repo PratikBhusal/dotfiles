@@ -8,6 +8,9 @@ gdrive/**/*
 gdrive
 **/gdrive/
 
+# Explicitly ignore work-related gitconfig values
+~/workplace/work/.work.gitconfig
+
 # .Vim Folders
 .vim/plugged
 .vim/.cache/*

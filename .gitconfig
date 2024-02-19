@@ -25,9 +25,8 @@
     ui          = auto
     pager       = true
 [user]
-# Please adapt and uncomment the following lines:
-    name        = PratikBhusal
-    email       = PratikBhusal@users.noreply.github.com
+    name  = PratikBhusal
+    email = PratikBhusal@users.noreply.github.com
 [core]
     autocrlf    = input
     editor = nvim
@@ -151,3 +150,13 @@
 [url "git@github.com:PratikBhusal"]
     # For your git repositories, always use ssh for pushing.
     pushInsteadOf = "https://github.com/PratikBhusal"
+# After including all default git config settings, include work-specific
+# settings. We need the trailing slash for subdirectories to work.
+#
+# Eg:
+# - user.name
+# - user.email
+#
+# Always make sure this include is the very last line of the .gitconfig file!
+[includeIf "gitdir:~/workplace/work/"]
+    path = ~/workplace/work/.work.gitconfig
