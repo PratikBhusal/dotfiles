@@ -34,6 +34,8 @@
     pager = delta
 [include]
     path = ~/.config/delta/themes.gitconfig
+# TODO: Toy around with `diff.colormoved`. See:
+# - https://git-scm.com/docs/git-diff#Documentation/git-diff.txt---color-movedltmodegt
 [diff]
     tool = nvimdiff
     # Improve upon the default greedy algorithm for code changes. See:
