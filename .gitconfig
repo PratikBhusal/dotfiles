@@ -65,3 +65,13 @@
     # Sort branches by last committed in ascending order ie branch with newest
     # commit is at the bottom.
     sort = committerdate
+[rebase]
+    # Improve upon the usual stacked branch workflow by automatically updating
+    # refs when rebasing.
+    #
+    # See:
+    # - https://andrewlock.net/working-with-stacked-branches-in-git-is-easier-with-update-refs
+    #
+    # TODO: Look into git-branchless:
+    # - https://github.com/arxanas/git-branchless
+    updateRefs = true
