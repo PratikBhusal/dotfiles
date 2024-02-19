@@ -28,5 +28,5 @@ indent_size = 2
 ij_kotlin_imports_layout=*,java.**,javax.**,kotlin.**,^
 # disabled_rules=import-ordering
 
-[*.{json,avsc}]
+[*.{json,avsc,yaml}]
 indent_size = 2
