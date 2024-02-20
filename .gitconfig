@@ -53,6 +53,29 @@
     uso = ! git diff --cached --name-only --diff-filter=ad | xargs git add -u
     # Make it a bit more explicit and safe that you want to force push changes
     push--force = push --force-with-lease --force-if-includes
+    rename-remote-branch = "!f() { : git push ;                                        \
+        if [ $# -ne 3 ]; then                                                          \
+            echo 'Rationale : Rename a branch on the server without checking it out.'; \
+            echo 'Usage     : git rename-remote <remote> <old name> <new name>';       \
+            echo 'Example   : git rename-remote origin master main';                   \
+            return 1;                                                                  \
+        fi;                                                                            \
+        git push $1 $1/$2:refs/heads/$3 :$2;                                           \
+    }; f"
+    rename-local-and-remote-branch = "!f() { : git branch ;                                              \
+        if [ $# -ne 2 ]; then                                                                            \
+            echo 'Rationale : Rename current local and and remote branch name without checking it out.'; \
+            echo 'Usage     : git cbrlr <remote> <new name>';                                            \
+            echo 'Example   : git rename-local-and-remote-branch origin main';                           \
+            return 1;                                                                                    \
+        fi;                                                                                              \
+                                                                                                         \
+        _old_branch_name=\"$(git branch --show-current)\";                                               \
+                                                                                                         \
+        git branch -m $2                                                                                 \
+        && git push $1 $1/$_old_branch_name:refs/heads/$2 :$_old_branch_name                             \
+        && git branch -u $1/$2;                                                                          \
+    }; f"
 [init]
     defaultBranch = main
 [difftool "nvimdiff"]
