@@ -1,9 +1,12 @@
 " Vim Backwards Compatibility {{{ ----------------------------------------------
 if exists("g:neovide")
+    let g:neovide_cursor_animate_command_line = v:false
+    let g:neovide_cursor_animate_in_insert_mode = v:false
     let g:neovide_cursor_animation_length = 0
     let g:neovide_cursor_trail_size = 0
-    let g:neovide_cursor_animate_in_insert_mode = v:false
-    let g:neovide_cursor_animate_command_line = v:false
+    let g:neovide_hide_mouse_when_typing = v:true
+    let g:neovide_scroll_animation_far_lines = 0
+    let g:neovide_scroll_animation_length = 0
 endif
 
 if empty($XDG_CACHE_HOME)  | let $XDG_CACHE_HOME  = $HOME.'/.cache'       | endif
