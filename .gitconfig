@@ -122,6 +122,8 @@
     #
     # See:
     # - https://andrewlock.net/working-with-stacked-branches-in-git-is-easier-with-update-refs
+    # - https://stacking.dev
+    # - https://www.codetinkerer.com/2023/10/01/stacked-branches-with-vanilla-git.html
     #
     # TODO: Look into git-branchless:
     # - https://github.com/arxanas/git-branchless
