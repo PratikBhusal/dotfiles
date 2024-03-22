@@ -175,6 +175,15 @@
 [url "git@github.com:PratikBhusal"]
     # For your git repositories, always use ssh for pushing.
     pushInsteadOf = "https://github.com/PratikBhusal"
+# After including all default git config settings, include Path of
+# Exile-specific settings. We need the trailing slash for subdirectories to
+# work.
+#
+# Eg:
+# - user.name
+# - user.email
+[includeIf "gitdir:~/workplace/path-of-exile/"]
+    path = ~/workplace/work/.path-of-exile.gitconfig
 # After including all default git config settings, include work-specific
 # settings. We need the trailing slash for subdirectories to work.
 #
