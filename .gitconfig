@@ -183,7 +183,7 @@
 # - user.name
 # - user.email
 [includeIf "gitdir:~/workplace/path-of-exile/"]
-    path = ~/workplace/work/.path-of-exile.gitconfig
+    path = ~/workplace/path-of-exile/.path-of-exile.gitconfig
 # After including all default git config settings, include work-specific
 # settings. We need the trailing slash for subdirectories to work.
 #
