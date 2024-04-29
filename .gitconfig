@@ -48,6 +48,7 @@
 # git log --exclude=refs/remotes/\* --all --oneline --graph
 [alias]
     st = status
+    diffremote = ! git diff origin/"$(git branch --show-current)"
     localloggraph = log --exclude=refs/remotes/* --all --oneline --graph
     localloggraphfrommain = log --exclude=refs/remotes/* --all --oneline --graph origin/main~..
     cane= commit --amend --no-edit
