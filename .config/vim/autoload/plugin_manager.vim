@@ -533,6 +533,7 @@ endif
 " Visual plugins {{{
 Pack 'tomasr/molokai', { 'type': 'opt' }
 Pack 'bling/vim-airline' | Pack 'vim-airline/vim-airline-themes'
+Pack 'psliwka/vim-smoothie'
 " add vim-lightline. May eventually replace vim-airline
 " Pack 'itchyny/lightline.vim'
 if has('nvim')
