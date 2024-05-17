@@ -49,6 +49,7 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 if command -v git-credential-manager 1> /dev/null 2>&1 \
     && [ "$DOTFILES_MACHINE" = 'Linux' ]; then
     export GCM_CREDENTIAL_STORE=cache
+    # Cache for 5 minutes
     export GCM_CREDENTIAL_CACHE_OPTIONS="--timeout 300"
 fi
 
