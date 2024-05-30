@@ -48,6 +48,7 @@ fi
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.cache/zsh/history
+setopt INC_APPEND_HISTORY_TIME
 
 # Enable command auto-completion
 autoload -Uz compinit
