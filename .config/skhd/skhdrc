@@ -84,7 +84,7 @@
 # cmd - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
 
 # Restart yabai
-ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+ctrl + alt + cmd - r : yabai --restart-service
 
 
 ## Close active application
