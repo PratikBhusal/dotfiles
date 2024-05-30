@@ -11,4 +11,7 @@ set incsearch
 set number
 set relativenumber
 
+" Make searching less tedious
+set ignorecase smartcase
+
 " source ~/.config/vim/vimrc
