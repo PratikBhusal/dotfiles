@@ -1,6 +1,12 @@
 #!/usr/bin/env sh
 # Keep it POSIX-compliant until I have no reason to
 
+# If not running interactively, don't do anything
+case "$-" in
+    *i*) ;;
+    *)   return ;;
+esac
+
 # shellcheck source=../sh/aliases.sh
 [ -s ~/.config/sh/aliases.sh ] && . ~/.config/sh/aliases.sh
 

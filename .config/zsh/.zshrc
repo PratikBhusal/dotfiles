@@ -1,5 +1,11 @@
 #!/usr/bin/env zsh
 
+# If not running interactively, don't do anything
+case "$-" in
+    *i*) ;;
+    *)   return ;;
+esac
+
 command -v pokemon-colorscripts 1> /dev/null 2>&1 && pokemon-colorscripts -r
 
 (( ${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"

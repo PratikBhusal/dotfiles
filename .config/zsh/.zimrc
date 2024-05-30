@@ -1,5 +1,11 @@
 #!/usr/bin/env zsh
 
+# If not running interactively, don't do anything
+case "$-" in
+    *i*) ;;
+    *)   return ;;
+esac
+
 # Prompt {{{
 zmodule romkatv/powerlevel10k --use degit
 # Prompt }}}
