@@ -24,6 +24,9 @@ autoload -U colors && colors
 
 [ "$LANG" = '' ] && export LANG=en_US.UTF-8
 
+# shellcheck source=.config/sh/functions.sh
+[ -s ~/.config/sh/functions.sh ] && . ~/.config/sh/functions.sh
+
 # shellcheck source=.config/sh/functions.d/extract_audio.sh
 [ -s ~/.config/sh/functions.d/extract_audio.sh ] && . ~/.config/sh/functions.d/extract_audio.sh
 
