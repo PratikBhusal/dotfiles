@@ -47,11 +47,11 @@
 #   ff = no
 # git log --exclude=refs/remotes/\* --all --oneline --graph
 [alias]
-    st = status
     diffremote = ! git diff origin/"$(git branch --show-current)"
     localloggraph = log --exclude=refs/remotes/* --all --oneline --graph
     localloggraphfrommain = log --exclude=refs/remotes/* --all --oneline --graph origin/main~..
     cane= commit --amend --no-edit
+    # uso == (git add) update staged only
     uso = ! git diff --cached --name-only --diff-filter=ad | xargs git add -u
     # Make it a bit more explicit and safe that you want to force push changes
     push--force = push --force-with-lease --force-if-includes
