@@ -50,6 +50,7 @@
     diffremote = ! git diff origin/"$(git branch --show-current)"
     localloggraph = log --exclude=refs/remotes/* --all --oneline --graph
     localloggraphfrommain = log --exclude=refs/remotes/* --all --oneline --graph origin/main~..
+    changes-since-main = log -p --reverse origin/main..
     cane= commit --amend --no-edit
     # uso == (git add) update staged only
     uso = ! git diff --cached --name-only --diff-filter=ad | xargs git add -u
