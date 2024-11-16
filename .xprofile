@@ -28,7 +28,7 @@ command -v nm-applet    1> /dev/null 2>&1 && nm-applet    &
 command -v xbanish      1> /dev/null 2>&1 && xbanish      &
 
 # Pipewire Equalizer
-command -v easyeffects  1> /dev/null 2>&1 && easyeffects  --hide-window &
+command -v easyeffects  1> /dev/null 2>&1 && easyeffects  --hide-window --gapplication-service &
 
 # Logitech devices
 command -v solaar       1> /dev/null 2>&1 && solaar --window=hide &
@@ -49,6 +49,8 @@ fi
 
 command -v xset     1> /dev/null 2>&1 && xset -b &
 picom -b
+# picom -b --unredir-if-possible --backend xr_glx_hybrid --vsync --use-damage --glx-no-stencil --no-fading-openclose
+# picom -b --unredir-if-possible --vsync --backend glx --glx-no-stencil --no-fading-openclose
 xrdb .Xresources &
 hsetroot -solid "#000000" &
 sxhkd &
