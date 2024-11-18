@@ -53,15 +53,41 @@ SAVEHIST=1000
 HISTFILE=~/.cache/zsh/history
 setopt INC_APPEND_HISTORY_TIME
 
-# Enable command auto-completion
-autoload -Uz compinit
+# TODO: Look into a different plugin manager
+#
+# See:
+# - https://github.com/rossmacarthur/zsh-plugin-manager-benchmark/tree/master
+# - https://github.com/romkatv/zsh-bench/tree/master
+# - https://github.com/mattmc3/zsh_unplugged
 
+# Zim plugin manager {{{
+zstyle ':zim:zmodule' use 'degit'
 
-if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
-    compinit;
-else
-    compinit -C;
-fi;
+ZIM_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"/zim
+
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+      https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+fi
+
+# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init
+  # source ${ZIM_HOME}/zimfw.zsh init -q
+fi
+
+# Initialize modules.
+source ${ZIM_HOME}/init.zsh
+# Zim plugin manager }}}
+
+# # Enable command auto-completion
+# if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+#     autoload -Uz compinit
+#     compinit;
+# else
+#     autoload -Uz compinit
+#     compinit -C;
+# fi;
 zmodload zsh/complist
 
 
@@ -154,35 +180,12 @@ precmd_functions+=(_use_beam_cursor)
 # Load fzf default settings
 command -v fzf 1> /dev/null 2>&1 && [ -f ~/.fzf.zsh ] && . ~/.fzf.zsh
 
-# TODO: Look into a different plugin manager
-#
-# See:
-# - https://github.com/rossmacarthur/zsh-plugin-manager-benchmark/tree/master
-# - https://github.com/romkatv/zsh-bench/tree/master
-# - https://github.com/mattmc3/zsh_unplugged
-
-# Zim plugin manager {{{
-zstyle ':zim:zmodule' use 'degit'
-
-ZIM_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"/zim
-
-if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
-  curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
-      https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
-fi
-
-# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
-if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
-  source ${ZIM_HOME}/zimfw.zsh init
-  # source ${ZIM_HOME}/zimfw.zsh init -q
-fi
-
-# Initialize modules.
-source ${ZIM_HOME}/init.zsh
-# Zim plugin manager }}}
 
 # shellcheck source=.config/nnn/config
 [ -s ~/.config/nnn/config ] && . ~/.config/nnn/config
+
+# Enable specific keybindings
+source ~/.config/zsh/keybindings.zsh
 
 # Setup pipx
 if command -v pipx 1> /dev/null 2>&1; then

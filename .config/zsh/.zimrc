@@ -20,17 +20,20 @@ zmodule ohmyzsh/ohmyzsh --root plugins/command-not-found
 zmodule ohmyzsh/ohmyzsh --root plugins/zsh-interactive-cd
 
 # zmodule ohmyzsh/ohmyzsh --root plugins/vim-interaction
+zmodule ohmyzsh/ohmyzsh --root plugins/fzf
+bindkey -r '^T'
+bindkey '^P' fzf-file-widget
 
 # Oh My Zsh Plugins }}}
 
 # Completions {{{
 
-zmodule zsh-users/zsh-completions --fpath src
 
 # Enables and configures smart and extensive tab completion.
 # completion must be sourced after all modules that add completion definitions.
 zmodule completion
 
+zmodule zsh-users/zsh-completions --fpath src
 # Completions }}}
 
 # Modules that need to be initialized last {{{
