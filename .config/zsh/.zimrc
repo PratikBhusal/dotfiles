@@ -28,12 +28,20 @@ bindkey '^P' fzf-file-widget
 
 # Completions {{{
 
-
 # Enables and configures smart and extensive tab completion.
 # completion must be sourced after all modules that add completion definitions.
 zmodule completion
 
 zmodule zsh-users/zsh-completions --fpath src
+
+# Add gradle autocompletion
+zmodule gradle/gradle-completion
+local gradle_completion_path="$ZIM_HOME/modules/gradle-completion"
+if ! (($fpath[(Ie)$gradle_completion_path])); then
+    fpath=("$ZIM_HOME/modules/gradle-completion" $fpath)
+fi
+
+
 # Completions }}}
 
 # Modules that need to be initialized last {{{
