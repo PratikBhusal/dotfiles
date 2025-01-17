@@ -8,7 +8,7 @@ for lock in "$LOCKER" i3lock slock; do
     if command -v "$lockname" > /dev/null 2>&1; then
         if [ "$lockname" = "i3lock" ]; then
             # exec "$lockname" "-c" "202020" "$@"
-            exec "$lockname" "-c" "000000" "$@"
+            exec "$lockname" "-c" "320000" "$@"
         else
             exec "$lock" "$@"
         fi
