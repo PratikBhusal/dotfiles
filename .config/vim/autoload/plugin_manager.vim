@@ -39,7 +39,7 @@ function! s:select_plugin_manager() abort
         endif
         if !filereadable($XDG_CONFIG_HOME . '/vim/autoload/plugpac.vim')
             execute 'silent !curl -fLo ' . $XDG_CONFIG_HOME . '/vim/autoload/plugpac.vim' . ' --create-dirs ' .
-                \ 'https://raw.githubusercontent.com/bennyyip/plugpac.vim/master/plugpac.vim'
+                \ 'https://raw.githubusercontent.com/bennyyip/plugpac.vim/master/legacy/plugpac.vim'
         endif
         autocmd VimEnter * PackUpdate | source $MYVIMRC
         return 'plugpac'
