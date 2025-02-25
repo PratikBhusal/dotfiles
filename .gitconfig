@@ -41,6 +41,19 @@
     # - https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms
     # - https://link.springer.com/article/10.1007/s10664-019-09772-z
     algorithm = histogram
+    # TESTING: No clue if I want colorMoved or not enabled. For now let's try it
+    # out. It will show code movement in different colors then added and removed
+    # lines.
+    colorMoved = plain
+    # Ignore whitespace changes in the colorMoved codeblocks.
+    colormovedws = allow-indentation-change
+    # Replace using the `diff.srcPrefix` and diff.dstPrefix` in your diff header
+    # output with where the diff is coming from:
+    #
+    # - i/ (index)
+    # - w/ (working directory)
+    # - c/ commit
+    mnemonicPrefix = true
 [commit]
     verbose     = true
 # [merge]
@@ -132,6 +145,11 @@
     # TODO: Look into git-branchless:
     # - https://github.com/arxanas/git-branchless
     updateRefs = true
+    # Before starting rebase, stash local modifications away if needed, and
+    # apply the stash entry when done.
+    autoStash = true
+    # TODO: Figure out if we need `autoSquash`.
+    # autoSquash = true
 [fetch]
     # If a branch/tag no longer exists in the remote repository, remove the
     # local reference when calling `git fetch` by default
@@ -152,7 +170,7 @@
     # command. Pressing `y` and enter runs the autocorrected command.
     #
     # use Ctrl-c to always cancel running the autocorrected command
-    autocorrect = prompt
+    autocorrect = 10
 [url "git@github.com:"]
     # When running:
     # ```
@@ -178,6 +196,19 @@
 [url "git@github.com:PratikBhusal"]
     # For your git repositories, always use ssh for pushing.
     pushInsteadOf = "https://github.com/PratikBhusal"
+[tag]
+    # The default sort is alphabetical, which does not work well with semver. In
+    # order to make tags better respect semver, We'll need to treat them as
+    # dot-separated integers instead.
+    sort = version:refname
+# Reuse recorded resolutions
+[rerere]
+    # Makes rebases with conflicts across multiple commits much easier. Every
+    # time you rebase conflicts, the resolution is automatically captured and
+    # usuable for the same conflict if it appears in a rebase later on.
+    enabled = true
+    # Automatically re-apply the rebase resolution changes.
+    autoupdate = true
 # After including all default git config settings, include Path of
 # Exile-specific settings. We need the trailing slash for subdirectories to
 # work.
