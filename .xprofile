@@ -47,6 +47,14 @@ if command -v setxkbmap 1> /dev/null 2>&1; then
     setxkbmap -option shift:both_capslock_cancel
 fi
 
+# As of thunar 4.20.2, the setting to prompt when moving to trash is a hidden
+# setting. Thankfully, it is relatively easy to enable.
+if command -v thunar 1> /dev/null 2>&1 \
+    && command -v xfconf-query 1> /dev/null 2>&1 \
+    && [ "$(xfconf-query --channel thunar --property /misc-confirm-move-to-trash)" != "true" ]; then
+    xfconf-query --channel thunar --property /misc-confirm-move-to-trash --create --type bool --set true
+fi
+
 command -v xset     1> /dev/null 2>&1 && xset -b &
 picom -b
 # picom -b --unredir-if-possible --backend xr_glx_hybrid --vsync --use-damage --glx-no-stencil --no-fading-openclose
