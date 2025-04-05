@@ -518,12 +518,18 @@ endif
 "         Pack 'PratikBhusal/vim-SnippetsCompleteMe'
 "     endif
 " endif
-" if isdirectory(expand('$HOME/.vim/pack/src/opt/vim-grip'))
-if isdirectory(expand('$HOME/.config/vim/pack/src/opt/vim-grip'))
-    autocmd LazyLoadPlugin Filetype markdown packadd vim-grip
-    " Pack expand('file://$HOME/.config/vim/pack/src/opt/vim-grip'), { 'for': 'markdown' }
-else
-    Pack 'PratikBhusal/vim-grip', { 'for': 'markdown' }
+
+if executable('grip')
+    if isdirectory(expand('$HOME/.config/vim/pack/src/opt/vim-grip'))
+        autocmd LazyLoadPlugin Filetype markdown packadd vim-grip
+        " Pack expand('file://$HOME/.config/vim/pack/src/opt/vim-grip'), { 'for': 'markdown' }
+    else
+        Pack 'PratikBhusal/vim-grip', { 'for': 'markdown' }
+    endif
+endif
+
+if executable('inflow') && !isdirectory(expand('$HOME/.config/vim/pack/src/start/vim-inflow'))
+    Pack 'PratikBhusal/vim-inflow'
 endif
 
 if !isdirectory(expand('$HOME/.config/vim/pack/src/start/vim-darkokai'))
