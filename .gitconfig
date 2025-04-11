@@ -216,8 +216,8 @@
 # Eg:
 # - user.name
 # - user.email
-[includeIf "gitdir:~/workplace/path-of-exile/"]
-    path = ~/workplace/path-of-exile/.path-of-exile.gitconfig
+[includeIf "gitdir:~/workplace/gaming-projects/"]
+    path = ~/workplace/gaming-projects/.gaming-projects.gitconfig
 # After including all default git config settings, include work-specific
 # settings. We need the trailing slash for subdirectories to work.
 #
