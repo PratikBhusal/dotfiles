@@ -12,7 +12,7 @@ endif
 function! s:format_json_file(...) abort
     let w:view = winsaveview()
     keepjumps normal! gg
-    silent keepjumps normal! '[v']gq
+    silent keepjumps normal! ggvGgq
     if v:shell_error > 0
         silent undo
         echohl ErrorMsg
