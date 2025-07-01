@@ -148,21 +148,6 @@ hyper - f : yabai -m window --toggle zoom-fullscreen
 # toggle window split type
 hyper - e : yabai -m window --toggle split
 
-
-# Move Window to Specific Desktop
-shift + cmd - 1 : yabai -m window --space 1
-shift + cmd - 2 : yabai -m window --space 2
-shift + cmd - 3 : yabai -m window --space 3
-shift + cmd - 4 : yabai -m window --space 4
-
-
-# Move Windows and go to desktop that it was put into
-hyper - 1 : yabai -m window --space 1 && eval "$(yabai -m query --spaces | jq --argjson index 1 -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."native-fullscreen" == 0)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')"
-hyper - 2 : yabai -m window --space 2 && eval "$(yabai -m query --spaces | jq --argjson index 2 -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."native-fullscreen" == 0)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')"
-hyper - 3 : yabai -m window --space 3 && eval "$(yabai -m query --spaces | jq --argjson index 3 -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."native-fullscreen" == 0)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')"
-hyper - 4 : yabai -m window --space 4 && eval "$(yabai -m query --spaces | jq --argjson index 4 -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."native-fullscreen" == 0)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')"
-
-
 # float / unfloat window and center on screen
 hyper - t : yabai -m window --toggle float;\
                   yabai -m window --grid 4:4:1:1:2:2;\
@@ -194,5 +179,20 @@ hyper - p : yabai -m window --toggle sticky;\
 # send window to monitor and follow focus
 # ctrl + cmd - c  : yabai -m window --display next; yabai -m display --focus next
 # ctrl + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
+
+# # Move Window to Specific Desktop
+# # If you want the closest to this abiility, drag the touch and hold
+# # the top window bar and use the hotkey to switch to a different
+# # workspace. The dragged window will come along for the ride.
+# shift + cmd - 1 : yabai -m window --space 1
+# shift + cmd - 2 : yabai -m window --space 2
+# shift + cmd - 3 : yabai -m window --space 3
+# shift + cmd - 4 : yabai -m window --space 4
+
+# # Move Windows and go to desktop that it was put into
+# hyper - 1 : yabai -m window --space 1 && eval "$(yabai -m query --spaces | jq --argjson index 1 -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."native-fullscreen" == 0)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')"
+# hyper - 2 : yabai -m window --space 2 && eval "$(yabai -m query --spaces | jq --argjson index 2 -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."native-fullscreen" == 0)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')"
+# hyper - 3 : yabai -m window --space 3 && eval "$(yabai -m query --spaces | jq --argjson index 3 -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."native-fullscreen" == 0)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')"
+# hyper - 4 : yabai -m window --space 4 && eval "$(yabai -m query --spaces | jq --argjson index 4 -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."native-fullscreen" == 0)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')"
 
 ################################################################################
