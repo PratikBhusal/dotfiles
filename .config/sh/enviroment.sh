@@ -89,7 +89,7 @@ append_to_path "$HOME/.cargo/bin"
 # Append pnpm/npm binaries
 append_to_path "$HOME/.local/pnpm-binaries/bin"
 append_to_path "$HOME/.local/npm-binaries/bin"
-append_to_path "$(go env GOPATH)/bin"
+command -v go 1> /dev/null 2>&1 && append_to_path "$(go env GOPATH)/bin"
 
 # Append go binaries
 append_to_path "$HOME/go/bin"
