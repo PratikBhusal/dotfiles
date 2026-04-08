@@ -3,8 +3,6 @@ docker: Pack, ship and run any application as a lightweight container
 fzf: Command-line fuzzy finder written in Go
 git-delta: Syntax-highlighting pager for git and diff output
 jq: Lightweight and flexible command-line JSON processor
-skhd: Simple hotkey-daemon for macOS.
-yabai: A tiling window manager for macOS based on binary space partitioning.
 lsd: Clone of ls with colorful output, file type icons, and more
 mpv: Media player based on MPlayer and mplayer2
 neovim: Ambitious Vim-fork focused on extensibility and agility

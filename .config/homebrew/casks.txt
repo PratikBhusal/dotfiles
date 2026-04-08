@@ -10,3 +10,4 @@ karabiner-elements: (Karabiner Elements) Keyboard customizer
 keepassxc: (KeePassXC) Password manager app
 vlc: (VLC media player) Multimedia player
 vscodium: (VSCodium) Binary releases of VS Code without MS branding/telemetry/licensing
+aerospace: (AeroSpace) AeroSpace is an i3-like tiling window manager for macOS
