@@ -11,11 +11,6 @@ case "$(uname -s)" in
 esac
 export DOTFILES_MACHINE
 
-
-# Make Vim follow XDG Base Directory specification
-export VIMINIT="if has('nvim') | so ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/init.vim | else | set nocp | so ${XDG_CONFIG_HOME:-$HOME/.config}/vim/vimrc | endif"
-# export VIMINIT="set nocp | source ${XDG_CONFIG_HOME:-$HOME/.config}/vim/vimrc"
-
 # Always include "-R" flag
 export LESS="-R"
 
