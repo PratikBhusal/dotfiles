@@ -4,6 +4,17 @@
 #include ".Xresources.d/dmenu"
 #include ".Xresources.d/xterm"
 
+! ```python
+! from math import sqrt
+
+! pixel_diagonal: float = sqrt(2256**2 + 1504**2)
+
+! length_millimeters: float = 13.5 / pixel_diagonal * 2256 * 25.4
+! width_millimeters: float = 13.5 / pixel_diagonal * 1504 * 25.4
+
+! print(length_millimeters, width_millimeters)
+! ```
+
 ! xrandr | grep -w connected
 ! eDP connected primary 2256x1504+0+0 (normal left inverted right x axis y axis) 285mm x 190mm
 ! 2256.0/(285.0/25.4) == 201 + 29/475 ~= 201
@@ -14,5 +25,30 @@
 ! 13.5/sqrt(2256^2+1504^2)*1504*25.4 ~= 190
 !
 ! xrdb -query | grep dpi
-! xdpyinfo | grep -B2 resolution
+!
+! Note: While we can directly set the resolution via `Xft.dpi`, it is better to
+! to set it via defining a `/etc/X11/xorg.conf.d/90-monitor.conf` file like the
+! following:
+!
+! ```xf86conf
+! Section "Monitor"
+!     Identifier             "eDP"
+!     DisplaySize            285 190    # In millimeters
+! EndSection
+! ```
+! Doing so will get the same result of setting the `Xft.dpi` to 201:
+! ```sh
+! > xdpyinfo | grep -B2 resolution
+! screen #0:
+!   dimensions:    2256x1504 pixels (285x190 millimeters)
+!   resolution:    201x201 dots per inch
+! ```
+
 ! Xft.dpi: 201
+! Xft.dpi: 201.06105263157895
+
+! 1.5x scale of 96
+! Xft.dpi: 144
+
+! 2x scale of 96
+! Xft.dpi: 192
