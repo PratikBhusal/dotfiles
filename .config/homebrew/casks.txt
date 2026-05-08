@@ -11,3 +11,7 @@ keepassxc: (KeePassXC) Password manager app
 vlc: (VLC media player) Multimedia player
 vscodium: (VSCodium) Binary releases of VS Code without MS branding/telemetry/licensing
 aerospace: (AeroSpace) AeroSpace is an i3-like tiling window manager for macOS
+notunes: (noTunes) Simple application that will prevent iTunes or Apple Music from launching
+scroll-reverser: (Scroll Reverser) Tool to reverse the direction of scrolling
+thaw: (Thaw) Menu bar manager
+tomatobar: (TomatoBar) Menu bar pomodoro timer
