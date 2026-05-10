@@ -228,3 +228,26 @@
 # Always make sure this include is the very last line of the .gitconfig file!
 [includeIf "gitdir:~/workplace/work/"]
     path = ~/workplace/work/.work.gitconfig
+# Allows `git blame` to omit changes from specific commits. Useful
+# for hiding commits where all you did was run a formatter.
+#
+# We use the special `:(optional)` magic filename option
+# to allow us to run `git blame` even if there is no
+# `.git-blame-ignore-revs` file defined at the root of the local repo.
+#
+# See:
+# - https://git-scm.com/docs/git-config#Documentation/git-config.txt-blameignoreRevsFile
+# - https://git-scm.com/docs/gitcli#_magic_filename_options
+# - https://docs.github.com/en/repositories/working-with-files/using-files/viewing-and-understanding-files#ignore-commits-in-the-blame-view
+#
+# TRIAL - Not sure if I want to have this here or not. Giving it a shot and see
+# how I feel about it.
+[blame]
+    ignoreRevsFile = :(optional).git-blame-ignore-revs
+# When working on a repo with multiple remotes (fork uses `origin` remote,
+# upstream uses `upstream` remote), we are forced to specify the remote on
+# every line. That's annoying. When there's some ambiguity on which one to
+# use, let's default to just `origin`. When I know for sure I want to push
+# to upstream, I will just directly specify `git push upstream main`.
+[checkout]
+    defaultRemote = origin
