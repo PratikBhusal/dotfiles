@@ -60,7 +60,8 @@
 #   ff = no
 # git log --exclude=refs/remotes/\* --all --oneline --graph
 [alias]
-    switch-interactive = ! git branch | grep -v "^*" | fzf --height=~100% | xargs git checkout
+    # switch (with interactive view)
+    switchi = ! git branch --sort=-committerdate | grep -v "^*" | fzf --height=~100% | xargs git checkout
     diffremote = ! git diff origin/"$(git branch --show-current)"
     localloggraph = log --exclude=refs/remotes/* --all --oneline --graph
     localloggraphfrommain = log --exclude=refs/remotes/* --all --oneline --graph origin/main~..
