@@ -235,10 +235,14 @@
 # to allow us to run `git blame` even if there is no
 # `.git-blame-ignore-revs` file defined at the root of the local repo.
 #
+# Make sure you're using at least git 2.53.0 to
+# avoid a segfault issue when using `:(optional)`
+#
 # See:
 # - https://git-scm.com/docs/git-config#Documentation/git-config.txt-blameignoreRevsFile
 # - https://git-scm.com/docs/gitcli#_magic_filename_options
 # - https://docs.github.com/en/repositories/working-with-files/using-files/viewing-and-understanding-files#ignore-commits-in-the-blame-view
+# - https://git.kernel.org/pub/scm/git/git.git/tree/Documentation/RelNotes/2.53.0.adoc#n194
 #
 # TRIAL - Not sure if I want to have this here or not. Giving it a shot and see
 # how I feel about it.
