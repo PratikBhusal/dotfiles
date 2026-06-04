@@ -30,6 +30,9 @@ autoload -U colors && colors
 # shellcheck source=.config/sh/functions.d/extract_audio.sh
 [ -s ~/.config/sh/functions.d/extract_audio.sh ] && . ~/.config/sh/functions.d/extract_audio.sh
 
+# shellcheck source=.config/sh/functions.d/streamaudio.sh
+[ -s ~/.config/sh/functions.d/streamaudio.sh ] && . ~/.config/sh/functions.d/streamaudio.sh
+
 # shellcheck source=.config/zsh/aliases.zsh
 [ -s ~/.config/zsh/aliases.zsh ] && . ~/.config/zsh/aliases.zsh
 
@@ -59,6 +62,11 @@ setopt INC_APPEND_HISTORY_TIME
 # - https://github.com/rossmacarthur/zsh-plugin-manager-benchmark/tree/master
 # - https://github.com/romkatv/zsh-bench/tree/master
 # - https://github.com/mattmc3/zsh_unplugged
+
+# Add custom _git completion to make it work with `dotfiles` alias
+fpath=("$ZDOTDIR/completions/git" $fpath)
+# Add auto completion for the `~/.config/sh/function.d/streamaudio.sh` function
+fpath=("$ZDOTDIR/completions/streamaudio" $fpath)
 
 # Zim plugin manager {{{
 zstyle ':zim:zmodule' use 'degit'
@@ -100,9 +108,6 @@ zstyle ':completion:*' menu select
 # Have same colors as the ls command for files
 # eval "$(dircolors)" # Do not need to call if done in aliases.zsh file
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
-# Add custom _git completion to make it work with `dotfiles` alias
-fpath=("$ZDOTDIR/completions/git" $fpath)
 
 # disable auto-completion for aliases
 # setopt COMPLETE_ALIASES
