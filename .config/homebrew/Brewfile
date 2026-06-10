@@ -1,0 +1,115 @@
+# Generated via:
+#
+# ```sh
+# brew bundle dump --describe --global --force --formula --cask --tap --npm --krew --winget --uv --cargo --go --vscode --mas
+# brew bundle dump --describe --global --force --tap --formula --cask --uv
+# ```
+#
+# To restore (if missing) and upgrade (if already installed), run:
+#
+# ```sh
+# brew bundle --global
+# ```
+#
+# To get explicitly installed formulae
+# ```sh
+# brew leaves | xargs brew desc --eval-all
+# ```
+#
+# To get explicitly installed casks
+# ```sh
+# brew ls --casks | xargs brew desc --eval-all
+# ```
+
+# Pomodoro timer for macOS menu bar
+# https://github.com/ArtemYurov/TomoBar
+tap "artemyurov/tomobar"
+cask "artemyurov/tomobar/tomobar"
+
+# AeroSpace is an i3-like tiling window manager for macOS
+# https://github.com/nikitabobko/AeroSpace
+tap "nikitabobko/tap"
+cask "nikitabobko/tap/aerospace"
+
+# A window border system for macOS
+# https://github.com/FelixKratz/JankyBorders
+# tap "felixkratz/formulae"
+# brew "felixkratz/formulae/borders"
+
+# Improved shell history for zsh, bash, fish and nushell
+brew "atuin", restart_service: :changed
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Like neofetch, but much faster because written mostly in C
+brew "fastfetch"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Library for Qalculate! program
+brew "libqalculate"
+# Clone of ls with colorful output, file type icons, and more
+brew "lsd"
+# Polyglot runtime manager (asdf rust clone)
+# brew "mise"
+# Collection of tools that nobody wrote when UNIX was young
+# Favorite tools: vipe, sponge, vidir
+brew "moreutils"
+# Media player based on MPlayer and mplayer2
+brew "mpv"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Fast, disk space efficient package manager
+brew "pnpm"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Utility that provides fast incremental file transfer
+brew "rsync"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
+# Bash syntax highlighter that encourages/fixes variables quoting
+# brew "shellharden"
+# Autoformat shell script source code
+# brew "shfmt"
+# Terminal multiplexer
+brew "tmux"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
+# Enable Windows-like alt-tab
+cask "alt-tab"
+# Virtual Audio Driver
+cask "blackhole-2ch"
+# Web browser
+cask "firefox"
+# Screen colour temperature controller
+cask "flux-app"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
+# Cross-platform Git credential storage for multiple hosting providers
+cask "git-credential-manager"
+# Keyboard customiser
+cask "karabiner-elements"
+# Open-source firewall to block unknown outgoing connections
+cask "lulu"
+# Simple application that will prevent iTunes or Apple Music from launching
+cask "notunes"
+# Open-source software for live streaming and screen recording
+cask "obs"
+# Tool to reverse the direction of scrolling
+cask "scroll-reverser"
+# Menu bar manager
+cask "thaw"
+
+uv "pynvim"
+uv "python-inflow"
+
+# bruno: (Bruno) Opensource IDE for exploring and testing api's
+# docker: Pack, ship and run any application as a lightweight container
+# hammerspoon: (Hammerspoon) Desktop automation application
+# keepassxc: (KeePassXC) Password manager app
+# vlc: (VLC media player) Multimedia player
+# vscodium: (VSCodium) Binary releases of VS Code without MS branding/telemetry/licensing
+# trash: CLI tool that moves files or folder to the trash
+# volta: JavaScript toolchain manager for reproducible environments
