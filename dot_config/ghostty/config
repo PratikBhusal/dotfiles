@@ -1,0 +1,35 @@
+window-decoration = false
+gtk-titlebar = false
+gtk-adwaita = false
+
+font-family = Iosevka NF
+font-style = Regular
+font-style-bold = Bold
+font-style-italic = Italic
+font-size = 18
+
+mouse-hide-while-typing = true
+
+background = #191919
+foreground = #f8f8f2
+palette = 0=#867462
+palette = 1=#f92672
+palette = 2=#a6e22e
+palette = 3=#e6db74
+palette = 4=#66d9ef
+palette = 5=#ae81ff
+palette = 6=#a1efe4
+palette = 7=#7E8E91
+palette = 8=#575b61
+palette = 9=#f92672
+palette = 10=#a6e22e
+palette = 11=#e6db74
+palette = 12=#66d9ef
+palette = 13=#ae81ff
+palette = 14=#a1efe4
+palette = 15=#f8f8f2
+selection-background = #f8f8f2
+selection-foreground = #191919
+
+# If on a mac, uncomment the below lines
+# initial-command = /bin/zsh -l -c tmux -2 attach || tmux -2

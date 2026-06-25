@@ -1,0 +1,45 @@
+{{ if ne .chezmoi.os "linux" }}
+.xinitrc
+.xprofile
+.Xresources
+.Xresources.d
+.gtkrc-2.0
+.gtkrc-2.0.mine
+.config/i3
+.config/i3blocks
+.config/picom
+.config/dunst
+.config/rofi
+.config/dmenu
+.config/sxhkd
+.config/feh
+.config/slop
+.config/interception
+.config/xboxdrv
+.config/xorg
+.config/xorg.conf.d
+.config/pipewire
+.config/Kvantum
+.config/Trolltech.conf
+.config/gtk-3.0
+.config/apt
+.config/pacman
+.config/pacman.d
+.config/yay
+.config/redshift.conf
+.config/libinput-gestures.conf
+.config/mimeapps.list
+.config/brave-flags.conf
+.config/discord-flags.conf
+{{ end }}
+
+{{ if ne .chezmoi.os "darwin" }}
+.config/aerospace
+.config/yabai
+.config/skhd
+.config/limelight
+{{ end }}
+
+{{ if ne .chezmoi.os "windows" }}
+.config/microsoft_windows
+{{ end }}

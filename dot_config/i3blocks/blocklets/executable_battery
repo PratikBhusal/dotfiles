@@ -1,0 +1,97 @@
+#!/usr/bin/perl
+#
+# Copyright 2014 Pierre Mavro <deimos@deimos.fr>
+# Copyright 2014 Vivien Didelot <vivien@didelot.org>
+#
+# Licensed under the terms of the GNU GPL v3, or any later version.
+#
+# This script is meant to use with i3blocks. It parses the output of the "acpi"
+# command (often provided by a package of the same name) to read the status of
+# the battery, and eventually its remaining time (to full charge or discharge).
+#
+# The color will gradually change for a percentage below 85%, and the urgency
+# (exit code 33) is set if there is less that 5% remaining.
+
+use strict;
+use warnings FATAL => 'all';
+use utf8;
+
+my $file;
+my $bat_number = $ENV{BLOCK_INSTANCE} || 0;
+
+open ($file, "<", "/sys/class/power_supply/BAT$bat_number/capacity");
+my $percent = <$file>;
+close $file;
+$percent=~ s/\s+$//;
+
+open ($file, "<", "/sys/class/power_supply/BAT$bat_number/status");
+my $status = <$file>;
+close $file;
+$status=~ s/\s+$//;
+
+open ($file, "<", "/sys/class/power_supply/BAT$bat_number/charge_now");
+my $charge_now = <$file>;
+close $file;
+
+open ($file, "<", "/sys/class/power_supply/BAT$bat_number/current_now");
+my $current_now = <$file> // 0;
+close $file;
+
+my $full_text = "";
+my $charge_numerator = 0;
+
+if ($status eq 'Discharging') {
+    if ($percent < 10) {
+        $full_text .= ' ';
+    } elsif ($percent < 25) {
+        $full_text .= ' ';
+    } elsif ($percent < 50) {
+        $full_text .= ' ';
+    } elsif ($percent < 75) {
+        $full_text .= ' ';
+    } elsif ($percent <=100) {
+        $full_text .= ' ';
+    }
+    $charge_numerator = $charge_now;
+} elsif ($status eq 'Charging') {
+    $full_text .= ' ';
+
+    open ($file, "<", "/sys/class/power_supply/BAT$bat_number/charge_full");
+    $charge_numerator = <$file> - $charge_now;
+    close $file;
+}
+$full_text .= " $percent%";
+
+my $short_text = $full_text;
+
+if ($current_now != 0) {
+    my $hours_remaining = $charge_numerator / $current_now;
+    my $minutes_remaining = $hours_remaining * 60 % 60;
+    $full_text .= sprintf " (%02d:%02d)",  $hours_remaining, $minutes_remaining;
+}
+
+# print text
+binmode(STDOUT, ":encoding(UTF-8)");
+print "$full_text\n";
+print "$short_text\n";
+
+if ($status eq 'Discharging') {
+    if ($percent < 25) {
+        print "#FF0000\n";
+    } elsif ($percent < 40) {
+        print "#FFAE00\n";
+    } elsif ($percent <= 80) {
+        print "#A8FF00\n";
+    } elsif ($percent > 80) {
+        # print "#FFF600\n";
+        print "#FFAE00\n";
+    }
+
+    if ($percent < 5) {
+        exit(33);
+    }
+} elsif ($status eq 'Charging') {
+    print "#FFFF00\n";
+}
+
+exit(0);

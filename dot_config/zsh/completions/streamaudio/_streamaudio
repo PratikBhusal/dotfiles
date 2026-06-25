@@ -1,0 +1,7 @@
+#compdef streamaudio
+
+# Repeated group marks --choose and --random as mutually exclusive in both completions.
+_arguments \
+  '(-h --help)'{-h,--help}'[show help text]' \
+  '(--choose --random)--choose[pick from built-in streams with fzf]' \
+  '(--choose --random)--random[play a random built-in stream]'

@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+
+if [ -f "$HOME/.profile" ]; then
+    # shellcheck source=../../.profile
+    . "$HOME/.profile"
+fi
+
+# if running bash
+if [ -f "$HOME/.config/bash/bashrc" ]; then
+    # shellcheck source=bashrc
+    . "$HOME/.config/bash/bashrc"
+fi

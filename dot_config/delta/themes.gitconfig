@@ -1,0 +1,81 @@
+# To use these themes, first include this file in your own gitconfig file:
+#
+# [include]
+#     path = PATH/TO/delta/themes.gitconfig
+#
+# Then, in your own gitconfig file, activate the chosen theme, e.g.
+#
+# [delta]
+#    features = kingfisher
+#
+# Please add your own themes to this file, and open a PR.
+#
+# Instructions:
+#
+# 1. The name of the theme must be the name of some sort of wild organism:
+#    mammal, bird, plant, mollusk -- whatever. It can be in any language.
+#
+# 2. Use `delta --show-config` to list all the style settings that are active in
+#    your current delta environment, but only include settings in your theme
+#    that are essential to its appearance.
+#
+# 3. Include either `dark = true` or `light = true` according to whether it is
+#    designed for a light or dark terminal background. (This marks a feature as
+#    a "theme", causing it to be picked up by `delta --show-themes`).
+#
+[delta "darkokai"]
+	# General
+	#######################################################################
+	#                               General                               #
+	#######################################################################
+	dark = true
+	keep-plus-minus-markers = false
+
+	#######################################################################
+	#                                File                                 #
+	#######################################################################
+	file-style = syntax
+	file-decoration-style = ul
+	file-added-label = [+]
+	file-copied-label = [==]
+	file-modified-label = [*]
+	file-removed-label = [-]
+	file-renamed-label = [->]
+
+	#######################################################################
+	#                                Hunk                                 #
+	#######################################################################
+	# hunk-header-file-style = purple ul bold
+	hunk-header-style = syntax
+	# hunk-header-decoration-style = blue box ul
+	hunk-header-decoration-style = ul box "#303436"
+	# hunk-header-decoration-style = blue ul
+	# hunk-header-decoration-style = none
+
+
+	#######################################################################
+	#                            Line numbers                             #
+	#######################################################################
+	line-numbers = true
+
+	line-numbers-minus-style = "#f92672" # Removed text style
+	line-numbers-plus-style = "#a6e22e" # Added text style
+	line-numbers-plus-style = "#a6e22e"
+	line-numbers-zero-style = "#7e8e91"
+	line-numbers-left-style = "#323232" # Left bar style
+	line-numbers-right-style = "#323232" # Right bar style
+
+	line-numbers-left-format = "{nm:^4}│"
+
+	#######################################################################
+	#                            Diff Contents                            #
+	#######################################################################
+	plus-style = syntax "#3b5214"
+	plus-non-emph-style = syntax "#3b5214"
+	plus-emph-style = "#191919" "#a6e22e"
+
+	minus-style = syntax "#52142a"
+	minus-non-emph-style = syntax "#52142a"
+	minus-emph-style = "#191919" "#f92672"
+
+# vim: ft=gitconfig

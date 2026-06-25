@@ -1,0 +1,35 @@
+#!/usr/bin/env sh
+
+# Recreate the `chezmoiignore.tmpl` behavior via `yadm
+# alt` template file on a git sparse-checkout file.
+
+set -eu
+
+repo="$(yadm introspect repo)"
+[ -n "$repo" ] || { echo "sparse-checkout: could not locate yadm repo" >&2; exit 1; }
+
+worktree="$(git --git-dir="$repo" config core.worktree 2>/dev/null || true)"
+[ -n "$worktree" ] || worktree="$HOME"
+staged="$worktree/.local/share/yadm/repo.git/info/sparse-checkout"
+target="$repo/info/sparse-checkout"
+
+mkdir -p "${staged%/*}"
+yadm alt >/dev/null 2>&1 || true
+
+if [ ! -f "$staged" ]; then
+    echo "sparse-checkout: rendered file '$staged' missing; skipping" >&2
+    echo "  (is the template tracked? run: yadm add -f <template> && yadm alt)" >&2
+    exit 0
+fi
+
+if [ "$staged" != "$target" ]; then
+    mkdir -p "${target%/*}"
+    cp -f "$staged" "$target"
+fi
+
+# Apply the patterns. `reapply` only works once the worktree is already sparse;
+# on the first run enter sparse mode with `init --no-cone`, which preserves the
+# existing info/sparse-checkout file (and sets core.sparseCheckout / cone=false).
+if ! yadm sparse-checkout reapply 2>/dev/null; then
+    yadm sparse-checkout init --no-cone
+fi

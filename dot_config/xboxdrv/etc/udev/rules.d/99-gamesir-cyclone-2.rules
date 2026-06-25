@@ -1,0 +1,7 @@
+# Create a symlink to appropriate /dev/input/eventX at /dev/gamesir-cyclone-2-xinput
+# Data retrieved from:
+#
+# ```sh
+# udevadm info --attribute-walk --path=$(udevadm info --query=path --name=/dev/input/eventX)
+# ```
+ACTION=="add", KERNEL=="event[0-9]*", SUBSYSTEM=="input", ATTRS{name}=="Generic X-Box pad", ATTRS{id/product}=="100b", ATTRS{id/vendor}=="3537", SYMLINK+="/dev/input/gamesir-cyclone-2-xinput"

@@ -1,0 +1,33 @@
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 4
+indent_style = space
+trim_trailing_whitespace = true
+# Show 80 and 120 column thresholds within IntelliJ editor
+ij_visual_guides = 80,120
+
+[*.diff]
+trim_trailing_whitespace = false
+
+[Makefile]
+indent_style = tab
+
+[*.rst]
+indent_size = 3
+
+[*.ts]
+indent_size = 2
+
+[*.{kt,kts}]
+ij_kotlin_imports_layout = *,^
+# default IntelliJ IDEA style, same as alphabetical, but with "java", "javax", "kotlin" and alias imports in the end of the imports list
+# ij_kotlin_imports_layout=*,java.**,javax.**,kotlin.**,^
+# disabled_rules=import-ordering
+
+[*.{json,avsc,yml,yaml}]
+indent_size = 2

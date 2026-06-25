@@ -1,0 +1,39 @@
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+.directory
+.Trash-*
+
+# Vim / editor scratch
+*~
+*.swp
+*.swo
+Session.vim
+.netrwhist
+
+# Swap files
+.*.sw[a-p]
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+
+# Temporary
+**/.netrwhist
+**/*~
+
+# Auto-generated tag files
+tags
+
+# Binaries
+*.exe

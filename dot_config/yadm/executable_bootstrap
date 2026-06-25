@@ -1,0 +1,31 @@
+#!/usr/bin/env sh
+
+# Execute all executable files (excluding templates and editor backups) in the
+# $XDG_CONFIG_HOME/yadm/bootstrap.d directory when run.
+
+set -eu
+
+# Source the shared library functions
+LIB_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/yadm/lib"
+
+# Directory to look for bootstrap executables in
+BOOTSTRAP_D="${XDG_CONFIG_HOME:-$HOME/.config}/yadm/bootstrap.d"
+
+# Resolve the directory with fallback logic
+# Compute script directory for fallback path
+if [ -n "${BASH_SOURCE:-}" ]; then
+    # shellcheck disable=SC3054
+    SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
+else
+    SCRIPT_DIR="$(dirname "$0")"
+fi
+
+# shellcheck source=lib/resolve-d-directory.sh
+. "${LIB_DIR}/resolve-d-directory.sh"
+BOOTSTRAP_D="$(resolve_d_directory "$BOOTSTRAP_D" "$SCRIPT_DIR" "bootstrap")"
+
+# shellcheck source=lib/run-d-directory.sh
+. "${LIB_DIR}/run-d-directory.sh"
+
+# Execute scripts in the directory
+run_d_directory "$BOOTSTRAP_D" "bootstrap"

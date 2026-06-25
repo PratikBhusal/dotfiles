@@ -1,0 +1,21 @@
+appimagelauncher # Staging inclusion.
+arc-kde
+birdtray # Staging inclusion.
+bluetuith # Bluetooth TUI
+cryptomator-bin
+dashbinsh
+devour
+kvantum-theme-arc
+lf-bin # Staging inclusion.
+libinput-gestures
+libinput-gestures-qt
+openasar-bin # For discord
+pcloud-drive
+pokemon-colorscripts
+selectdefaultapplication-fork-git # Staging inclusion.
+spotify-adblock
+xbanish
+xcursor-oxygen
+xidlehook
+xournalpp-git
+yay
