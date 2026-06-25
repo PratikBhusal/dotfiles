@@ -17,6 +17,14 @@
 # - https://github.com/Wilfred/difftastic/issues/275
 # - https://github.com/Wilfred/difftastic/pull/286
 # - https://github.com/Wilfred/difftastic/issues/613
+#
+# Note: To remove a file completely from the git history, see:
+#
+# ```sh
+# uv tool install git-filter-repo
+# git filter-repo --invert-paths --path path/to/file.txt
+# git reflog expire --expire=now --all && git gc --prune=now --aggressive
+# ```
 [color]
     diff        = auto
     status      = auto
@@ -145,6 +153,10 @@
     #
     # TODO: Look into git-branchless:
     # - https://github.com/arxanas/git-branchless
+    #
+    # TODO: Look into Jujutsu:
+    # - https://github.com/jj-vcs/jj
+    # - https://steveklabnik.github.io/jujutsu-tutorial/
     updateRefs = true
     # Before starting rebase, stash local modifications away if needed, and
     # apply the stash entry when done.
@@ -210,6 +222,16 @@
     enabled = true
     # Automatically re-apply the rebase resolution changes.
     autoupdate = true
+# After including all default git config settings, include personal-specific
+# settings. We need the trailing slash for subdirectories to work.
+#
+# Eg:
+# - user.name
+# - user.email
+#
+# Always make sure this include is the very last line of the .gitconfig file!
+[includeIf "gitdir:~/workplace/personal/"]
+    path = ~/workplace/personal/.personal.gitconfig
 # After including all default git config settings, include Path of
 # Exile-specific settings. We need the trailing slash for subdirectories to
 # work.
