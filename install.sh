@@ -87,6 +87,9 @@ fi
 # dotfiles config --local status.showUntrackedFiles no
 dotfiles config --local core.worktree "$HOME"
 
+# Don't show untracked files by default
+dotfiles config status.showUntrackedFiles no
+
 # Use default pager if delta diff tool does not exist
 if ! command -v delta 1> /dev/null 2>&1; then
     git config --global --unset core.pager
