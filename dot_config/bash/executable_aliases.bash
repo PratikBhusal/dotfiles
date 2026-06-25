@@ -19,7 +19,7 @@ fi
 alias clear="export screen_clear='true'; clear"
 
 
-if [ "$(command -v git)" ] && [ "$(alias dotfiles)" ]; then
-    _completion_loader git
-    __git_complete dotfiles __git_main
+if command -v chezmoi >/dev/null 2>&1; then
+    eval "$(chezmoi completion bash)"
+    complete -o default -F __start_chezmoi dotfiles
 fi

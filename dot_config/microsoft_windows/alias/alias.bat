@@ -13,5 +13,5 @@ DOSKEY which=where $*
 :: DOSKEY wc=$b find /c /v ""
 
 :: Programming
-DOSKEY dotfiles=git --git-dir=%HOME%\.dotfiles\ --work-tree=%HOME% $*
+DOSKEY dotfiles=chezmoi $*
 DOSKEY python3=python

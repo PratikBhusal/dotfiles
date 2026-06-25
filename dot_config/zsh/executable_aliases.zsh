@@ -42,6 +42,10 @@ esac
 #if [ -d "$HOME/.dotfiles" ] && [ ~ = $HOME ]; then
 #    alias dotfiles='git --git-dir ~/.dotfiles/ --work-tree ~'
 #fi
+#
+# Update: We're using chezmoi so we don't need to worry about this anymore
+# 'dotfiles' alias (-> chezmoi) is defined in sh/aliases.sh, sourced above.
+# chezmoi ships its own zsh completion; no git-dir workaround needed.
 
 # nnn file manager
 if [ "$(command -v nnn)" ] && [ -s ~/.config/nnn/misc/quitcd.bash_zsh ]; then
