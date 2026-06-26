@@ -1,8 +1,0 @@
-{
-  "openasar": {
-    "setup": true,
-    "quickstart": true,
-    "noTyping": true
-  },
-  "SKIP_HOST_UPDATE": true
-}

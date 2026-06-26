@@ -1,2 +1,0 @@
-Programming Projects	/media/pratik/Windows/Programming-Projects/
-Vim Config Files	/home/pratik/

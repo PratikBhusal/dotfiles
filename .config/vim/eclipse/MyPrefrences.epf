@@ -1,7 +1,0 @@
-#Sun Jan 21 00:41:36 CST 2024
-\!/=
-/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.ondemandthreshold=999
-/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.staticondemandthreshold=999
-@org.eclipse.jdt.core=3.36.0.v20231115-1055
-@org.eclipse.jdt.ui=3.31.0.v20231115-2128
-file_export_version=3.0

@@ -1,7 +1,0 @@
-snippet bord "Insert a vim fold border" b
-${1} {{{${0:1} `!p snip.rv = '-' * (int(snip.opt('&tw')) - len(t[1]) - 8)`
-endsnippet
-
-snippet bordc "Insert a vim fold close border" b
-$1${0:1}}}} `!p snip.rv = '-' * (int(snip.opt('&tw')) - len(t[1]) - 7)`
-endsnippet
