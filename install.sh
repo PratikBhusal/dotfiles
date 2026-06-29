@@ -108,3 +108,12 @@ else
     dotfiles config credential.credentialStore cache
     dotfiles config credential.cacheOptions "--timeout 300"
 fi
+
+# Add symlink to yadm default repository location
+YADM_REPO="${XDG_DATA_HOME:-$HOME/.local/share}/yadm/repo.git"
+if [ -e "$YADM_REPO" ]; then
+    echo "Warning: $YADM_REPO exists, skipping yadm symlink creation." >&2
+else
+    mkdir -p "$(dirname "$YADM_REPO")"
+    ln -s "$HOME/.dotfiles" "$YADM_REPO"
+fi
