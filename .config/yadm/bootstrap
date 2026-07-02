@@ -5,36 +5,27 @@
 
 set -eu
 
+# Source the shared library functions
+LIB_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/yadm/lib"
+
 # Directory to look for bootstrap executables in
 BOOTSTRAP_D="${XDG_CONFIG_HOME:-$HOME/.config}/yadm/bootstrap.d"
 
-# # Try the fallback if our preferred location does not work
-# if [ ! -d "$BOOTSTRAP_D" ]; then
-#     echo "Warning: bootstrap directory '$BOOTSTRAP_D' not found." >&2
-#     echo "Trying fallback: $0.d" >&2
-#     BOOTSTRAP_D="$0.d"
-# fi
-
-# If fallback fails, throw and error and exit
-if [ ! -d "$BOOTSTRAP_D" ]; then
-    # echo "Error: Fallback bootstrap directory '$BOOTSTRAP_D' not found" >&2
-    echo "Error: bootstrap directory '$BOOTSTRAP_D' not found" >&2
-    exit 1
+# Resolve the directory with fallback logic
+# Compute script directory for fallback path
+if [ -n "${BASH_SOURCE:-}" ]; then
+    # shellcheck disable=SC3054
+    SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
+else
+    SCRIPT_DIR="$(dirname "$0")"
 fi
 
-find -L "$BOOTSTRAP_D" -type f | sort | while IFS= read -r bootstrap; do
-    # 1. Check that the file is executable. If not an executable file, skip.
-    [ -x "$bootstrap" ] || continue
-    # 2. Check that the does not contain the substring '##' (ie
-    #    template files) nor end with '~' (ie editor backup files)
-    case "$bootstrap" in
-        *'##'*) continue ;;
-        *'~') continue ;;
-    esac
+# shellcheck source=lib/resolve-d-directory.sh
+. "${LIB_DIR}/resolve-d-directory.sh"
+BOOTSTRAP_D="$(resolve_d_directory "$BOOTSTRAP_D" "$SCRIPT_DIR" "bootstrap")"
 
-    # Check that the bootstrap file ran successfully. If not, throw an error.
-    if ! "$bootstrap"; then
-        echo "Error: bootstrap '$bootstrap' failed" >&2
-        exit 1
-    fi
-done
+# shellcheck source=lib/run-d-directory.sh
+. "${LIB_DIR}/run-d-directory.sh"
+
+# Execute scripts in the directory
+run_d_directory "$BOOTSTRAP_D" "bootstrap"
